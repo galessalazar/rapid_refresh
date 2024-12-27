@@ -2,7 +2,8 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
-
+    // can delete line 6 and the closing tag, i was trying to fix the navbar positioning
+   <nav className='navBar'>
     <nav className="bg-gray-800">
     <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
       <div className="relative flex h-16 items-center justify-between">
@@ -94,6 +95,7 @@ const Navbar = () => {
       </div>
     </div>
    </nav>
+  </nav>
     );
   };
 

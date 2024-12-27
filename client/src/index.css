@@ -12,7 +12,9 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 } */
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 .bruno-ace-regular {
   font-family: "Bruno Ace", sans-serif;

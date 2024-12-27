@@ -12,7 +12,11 @@ function App() {
     <>
     <BrowserRouter>
       <Navbar />
-        <h1>Rapid Refresh</h1>
+       
+       
+       
+       
+        <h1>Rapid Refresh!</h1>
      
        
         </BrowserRouter> 

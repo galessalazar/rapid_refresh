@@ -12,8 +12,6 @@
   },
   "devDependencies": {
     "concurrently": "^9.1.0"
-  },
-  "dependencies": {
-    "tailwindcss": "^3.4.16"
   }
+ 
 }
