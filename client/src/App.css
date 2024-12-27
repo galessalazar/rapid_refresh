@@ -1,17 +1,27 @@
-#root {
+/* #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
  
-}
- body {
-  background-color: aqua;
- }
+} */
+  body {
+
+  
+      margin: 0;
+      display: flex;
+      place-items: center;
+      min-width: 320px;
+      min-height: 100vh;  
+     background-color: aqua;
+  }
 .navBar {
   position: fixed;
   top: 0;
- }
+  display: justify-content;
+justify-content: center;
+}
+
 
 
 
