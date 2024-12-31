@@ -22,10 +22,44 @@
   left: 0;
   
 }
+h1 {
+  font-family: "Bruno Ace", sans-serif;
+  font-size: 3.2em;
+  line-height: 1.1;
+  color: white;
+  /* text-align: left; */
+}
+
+/* .title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 0;
+} */
+/* once i created this for this class that hamburger menu appeared get rid of this if you want im trying to move the company name to the far left */
+/* .flex  {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  margin-left: 0;
+} */
 
  
 
+.flex {
+  align-items: center;
+}
 
+.hidden {
+  margin-left:-25%;
+  
+}
+
+.rounded-md {
+  display: flex;
+  justify-content: end;
+  /* align-items: center; */
+}
 
 
 
