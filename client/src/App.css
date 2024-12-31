@@ -18,9 +18,12 @@
 .navBar {
   position: fixed;
   top: 0;
-  display: justify-content;
-justify-content: center;
+  width: 100%;
+  left: 0;
+  
 }
+
+ 
 
 
 
