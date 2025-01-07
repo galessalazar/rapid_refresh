@@ -64,7 +64,8 @@ h1 {
 .material-symbols-outlined {
  
 
-
+position: relative;
+top: .5em;
   font-size: 50px;
   font-variation-settings:
   'FILL' 0,
@@ -76,5 +77,11 @@ h1 {
 
 
 
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #fdfefe;
+  }
 
 
+}
