@@ -14,7 +14,7 @@ function App() {
        
        
        
-        <h1>Rapid Refresh!</h1>
+        
      
        
         </BrowserRouter> 

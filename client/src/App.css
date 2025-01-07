@@ -55,11 +55,27 @@ h1 {
   
 }
 
-.rounded-md {
-  display: flex;
-  justify-content: end;
-  /* align-items: center; */
+
+.nav.bg-gray-800 {
+  display: block;
+  text-align: end;
 }
+
+.material-symbols-outlined {
+ 
+position: absolute;
+top: 10;
+left: 10;
+
+  font-size: 50px;
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+
 
 
 
