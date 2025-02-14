@@ -8,9 +8,7 @@ Rapid Refresh is an easy-to-use web application designed to streamline the booki
 git clone https://github.com/galessalazar/rapid_refresh.git
 ```
 
-```bash
-pip install foobar
-```
+
 
 ## Technologies Used
 
