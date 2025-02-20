@@ -3,6 +3,7 @@ require("dotenv").config();
 const path = require("path");
 const db = require("./controllers/connection");
 const Service = require('./models/Service')
+const serviceRoutes = require('./routes/serviceRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
