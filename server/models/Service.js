@@ -9,7 +9,7 @@ Service.init(
             type: DataTypes.STRING
         },
         serviceDescription: {
-            type: DataTypes.STRING
+            type: DataTypes.TEXT
         },
         costOfService: {
             type: DataTypes.INTEGER
