@@ -16,7 +16,7 @@ Service.init(
         },
         estimatedTime: {
             type: DataTypes.INTEGER
-        }
+        },
 
         sequelize,
         timestamps: false,
