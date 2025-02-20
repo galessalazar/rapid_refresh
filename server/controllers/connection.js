@@ -9,7 +9,7 @@ const sequelize = new Sequelize(
     
 
     {
-        DB_LOCATION,
+        // DB_LOCATION,
         host: 'localhost',
         dialect: 'postgres'
 
