@@ -14,14 +14,13 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../client/dist")));
 
   app.get("/", (req, res) => {
-    res.send("");
+    res.send("API access");
   });
 }
 
-db.once("open", () => {
-  app.listen(PORT, () => {
-    console.log(`API server running on port ${PORT} `);
+db.sync({force: true}).then(() => {
+  app.listen(PORT, () => console.log(`API server running on port ${PORT} `));
   });
-});
+
 
 

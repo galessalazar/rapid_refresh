@@ -1,5 +1,5 @@
 const { Model, DataTypes } = require('sequelize')
-const sequelize = require('../controllers/connection')
+const db = require('../controllers/connection')
 
 class Service extends Model {}
 
@@ -17,13 +17,16 @@ Service.init(
         estimatedTime: {
             type: DataTypes.INTEGER
         },
-
-        sequelize,
+    },
+        {
+        sequelize: db,
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'service'
-    }
+        modelName: 'service',
+        }
+        
+    
 )
 
 module.exports = Service;
