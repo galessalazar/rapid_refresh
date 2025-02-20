@@ -1,7 +1,16 @@
-const mongoose = require('mongoose');
+const Sequelize = require('sequelize')
+require('dotenv').config()
 
 
-// double check the rapidrefresh part i dont remember where i get that from
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/rapidrefresh');
+const sequelize = new Sequelize(
+    'DB_NAME',
+    'DB_USER',
+    'DB_PASSWORD', 
+    {
+        DB_LOCATATION,
+        host: 'localhost',
+        dialect: 'postgres'
 
-module.exports = mongoose.connection;
+    }
+)
+
