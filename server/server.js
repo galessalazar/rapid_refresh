@@ -11,12 +11,16 @@ const PORT = process.env.PORT || 3001;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+
+// this needs to remain outside of the below if statement to always include a default route
+app.get("/", (req, res) => {
+  res.send("API access");
+})
+
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../client/dist")));
 
-  app.get("/", (req, res) => {
-    res.send("API access");
-  });
+ ;
 }
 
 db.sync({force: true}).then(() => {
