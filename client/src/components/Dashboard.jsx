@@ -3,12 +3,8 @@ import axios from '../axiosConfig';
 
 const Dashboard = () => {
     const [services, setServices] = useState([]);
-    const [newService, setNewService] = useState({
-        serviceName: '',
-        serviceDescription: '', 
-        costOfService: '',
-        estimatedTime: '',
-    })
+    setServices([...services, response.data]);
+
 
     useEffect(() => {
         axios.get('/services').then(response => {
@@ -19,17 +15,7 @@ const Dashboard = () => {
         })
     }, []);
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        axios.post('/services', newService).then(response => {
-            setServices([...services, response.data]);
-            setNewService({ serviceName: '', serviceDescription: '', costOfService: '', estimatedTime: ''});
-
-        })
-
-        .catch(error => {
-            console.error('Error adding service:', error);
-        })
+   
     }
 
     const handleDelete = (id) => {
