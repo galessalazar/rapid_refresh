@@ -22,6 +22,8 @@ if (process.env.NODE_ENV === "production") {
 
  ;
 }
+// requests made to /services will go to serviceRoutes.js file, 1st parameter is building the url, 2nd parameter is the physical directory
+app.use('/services', serviceRoutes);
 
 db.sync({force: true}).then(() => {
   app.listen(PORT, () => console.log(`API server running on port ${PORT} `));

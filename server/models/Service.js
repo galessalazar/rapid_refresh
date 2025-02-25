@@ -5,6 +5,11 @@ class Service extends Model {}
 
 Service.init(
     {
+        serviceId: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true
+        },
         serviceName: {
             type: DataTypes.STRING
         },
