@@ -1,6 +1,7 @@
 import React, { useEffect, useState} from "react";
 import axios from '../axiosConfig';
 import ServiceForm from "./ServiceForm";
+import ServiceList from "./ServiceList";
 
 const Dashboard = () => {
     const [services, setServices] = useState([]);
