@@ -10,7 +10,7 @@ const ServiceForm = ({ onAddService }) => {
     })
     const handleSubmit = (event) => {
         event.preventDefault();
-        axios.post('/services', newService).then(response => {
+        axios.post('/api/services', newService).then(response => {
             onAddService(response.data);
             setNewService({ serviceName: '', serviceDescription: '', costOfService: '', estimatedTime: ''});
 
@@ -24,25 +24,32 @@ const ServiceForm = ({ onAddService }) => {
     return (
         <form onSubmit={handleSubmit}>
 
-            <input type="text" value={newService.serviceName} onChange={(e) => setNewService({ ...newService, serviceName: e.target.value})} placeholder="Service Name" />
+            <input type="text" value={newService.serviceName} onChange={(e) => setNewService({ ...newService, serviceName: e.target.value})} placeholder="Service Name" required />
 
             <input 
             type="text"
             value={newService.serviceDescription}
             onChange={(e) => setNewService({ ...newService, serviceDescription: e.target.value})}
-            placeholder="Description" />
+            placeholder="Description" required />
 
             <input
             type="number"
             value={newService.costOfService}
             onChange={(e) => setNewService({...newService, costOfService: e.target.value})}
-            placeholder="Cost" />
+            placeholder="Cost"
+            // wont leave input empty
+            required
+            // prevents negative values 
+            min='0'
+            // allows for decimals/ not necessary
+            // step='0.01'
+            />
 
             <input
             type="number"
             value={newService.estimatedTime}
             onChange={(e) => setNewService({ ...newService, estimatedTime: e.target.value})}
-            placeholder="Time (in hours)" />
+            placeholder="Time (in hours)" required min='0' />
 
             <button type="submit">Add Service</button>
         </form>
