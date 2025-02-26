@@ -21,8 +21,8 @@ const Dashboard = () => {
     const handleAddService = (newService) => {
         setServices([...services, newService])
     }
-const handleDeleteService = (id) => {
-    setServices(services.filter(service => service.id !== id))
+const handleDeleteService = (serviceId) => {
+    setServices(services.filter(service => service.serviceId !== serviceId))
 }
 
 return (
