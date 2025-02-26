@@ -53,10 +53,10 @@ router.put('/:id', async (req, res) => {
     }
 })
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:serviceId', async (req, res) => {
     try {
-        const { id } = req.params;
-        const service = await Service.findByPk(id);
+        const { serviceId } = req.params;
+        const service = await Service.findByPk(serviceId);
 
         if (!Service) {
             return res.status(404).send('Service not found');
