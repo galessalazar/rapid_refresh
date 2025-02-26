@@ -22,12 +22,16 @@ const Dashboard = () => {
         setServices([...services, newService])
     }
 const handleDeleteService = (serviceId) => {
-    setServices(services.filter(service => service.serviceId !== serviceId))
+    axios.delete(`/api/services/${serviceId}`)
+    .then(() => {
+            setServices(services.filter(service => service.serviceId !== serviceId))
+
+    })
 }
 
 return (
     <div>
-        
+
 
         <h2>Dashboard</h2>
         <ServiceForm onAddService={handleAddService} />
