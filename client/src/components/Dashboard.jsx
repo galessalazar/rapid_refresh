@@ -9,7 +9,8 @@ const Dashboard = () => {
 
 
     useEffect(() => {
-        axios.get('/services').then(response => {
+        // this get needs to match the server.js url built
+        axios.get('/api/services').then(response => {
             setServices(response.data);
         })
         .catch(error => {
