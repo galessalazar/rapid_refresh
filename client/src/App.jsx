@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import "./App.css";
 import Dashboard from "./components/Dashboard";
+import AboutUs from "./components/AboutUs";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<div>Homepage</div>} />
           {/* This provides a separate route for the dashboard */}
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/about" element={<AboutUs />} />
         </Routes>
       </BrowserRouter>
     </>
