@@ -53,6 +53,15 @@ const Contact = () => {
                 onChange={handleChange}
                 required
                 />
+                <label htmlFor="name">Email:</label>
+                <input
+                type="text"
+                id="email"
+                name='email'
+                value={formData.email}
+                onChange={handleChange}
+                required
+                />
                 <label htmlFor="message">Message:</label>
                 <textarea
                 id="message"

@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const Contact = require('../models/Contact');
 
 // why cant i do /models/Contact
 const  {Contact}  = require('../models')
