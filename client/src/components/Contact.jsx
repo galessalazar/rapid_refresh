@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from 'axios';
 
 const Contact = () => {
     const [formData, setFormData] = useState ({
@@ -14,16 +15,29 @@ const Contact = () => {
         })
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        alert('Thank you for contacting us!');
 
-// clear out the form after hitting submit
-        setFormData({
+        try {
+
+            // sends a POST request to backend at /api/contacts
+
+            await axios.post('/api/contacts', formData);
+           
+            // clear out the form after hitting submit
+
+            setFormData({
             name: '',
             email: '',
             message:'',
         })
+       
+        alert('Thank you for contacting us!');
+ } catch (error) {
+    console.error('Error submitting the form:', error);
+    alert('There was an error submitting your message. Please try again.')
+ }
+       
     };
 
     return (
