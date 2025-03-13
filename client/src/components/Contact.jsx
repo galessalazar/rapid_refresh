@@ -17,6 +17,13 @@ const Contact = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         alert('Thank you for contacting us!');
+
+// clear out the form after hitting submit
+        setFormData({
+            name: '',
+            email: '',
+            message:'',
+        })
     };
 
     return (

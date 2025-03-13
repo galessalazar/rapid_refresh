@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import "./App.css";
 import Dashboard from "./components/Dashboard";
 import AboutUs from "./components/AboutUs";
+import Contact from "./components/Contact";
 
 function App() {
   const [count, setCount] = useState(0);
