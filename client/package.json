@@ -17,7 +17,8 @@
     "react-router-dom": "^7.1.1",
     "vite": "^6.0.1",
     "@vitejs/plugin-react": "^4.3.4",
-    "tailwindcss": "^3.4.17"
+    "tailwindcss": "^3.4.17",
+    "autoprefixer": "^10.4.20"
 
 
   },
@@ -25,7 +26,6 @@
     "@eslint/js": "^9.15.0",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
-    "autoprefixer": "^10.4.20",
     "eslint": "^9.15.0",
     "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-react-hooks": "^5.0.0",
