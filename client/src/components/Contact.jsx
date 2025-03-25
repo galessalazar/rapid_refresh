@@ -53,7 +53,7 @@ const Contact = () => {
                 onChange={handleChange}
                 required
                 />
-                <label htmlFor="name">Email:</label>
+                <label htmlFor="email">Email:</label>
                 <input
                 type="text"
                 id="email"

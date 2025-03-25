@@ -2,10 +2,11 @@ const express = require("express");
 require("dotenv").config();
 const path = require("path");
 
-const { sequelize } = require("./models");
-const db = require("./controllers/connection");
+const sequelize = require("./controllers/connection");
 const serviceRoutes = require("./routes/serviceRoutes");
 const contactRoutes = require("./routes/contactRoutes");
+// const { sequelize } = require('./models/index');
+
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -23,8 +24,8 @@ if (process.env.NODE_ENV === "production") {
 }
 // requests made to /services will go to serviceRoutes.js file, 1st parameter is building the url, 2nd parameter is the physical directory, this 1st parameter needs to match the axios post in serviceForm.jsx in the front
 app.use("/api/services", serviceRoutes);
-app.use(contactRoutes);
+app.use('/api', contactRoutes);
 
-db.sync({ force: true }).then(() => {
+sequelize.sync({ force: true }).then(() => {
   app.listen(PORT, () => console.log(`API server running on port ${PORT} `));
 });

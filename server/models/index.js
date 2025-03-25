@@ -1,8 +1,16 @@
-const { Sequelize } = require('sequelize');
+// // const { Model, DataTypes } = require('sequelize');
 
-const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
-    host: process.env.DB_HOST,
-    dialect: 'postgres',
-});
+// const  sequelize  = require('../controllers/connection');
 
-module.exports = { sequelize };
+// const Contact = require('./Contact');
+// const Service = require('./Service');
+
+// Contact.init(sequelize);
+// Service.init(sequelize);
+
+
+// sequelize.sync().then(() => {
+//     console.log('Database synced');
+// }).catch(err => console.error('Sync error:', err));
+
+// module.exports = { sequelize, Contact, Service };

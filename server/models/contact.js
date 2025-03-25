@@ -1,6 +1,5 @@
 const { Model, DataTypes } = require('sequelize')
-const db = require('../controllers/connection')
-const { sequelize } = require('./Service')
+const sequelize = require('../controllers/connection')
 
 class Contact extends Model {}
 
@@ -22,7 +21,7 @@ Contact.init(
 
 
 {
-    sequelize: db,
+    sequelize: sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
