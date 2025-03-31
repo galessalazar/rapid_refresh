@@ -58,7 +58,7 @@ router.delete('/:serviceId', async (req, res) => {
         const { serviceId } = req.params;
         const service = await Service.findByPk(serviceId);
 
-        if (!Service) {
+        if (!service) {
             return res.status(404).send('Service not found');
         }
 
