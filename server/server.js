@@ -20,6 +20,8 @@ app.get("/", (req, res) => {
 });
 
 if (process.env.NODE_ENV === "production") {
+  console.log(process.env.NODE_ENV);  // This will print 'production' or 'development'
+
   app.use(express.static(path.join(__dirname, "../client/dist")));
 }
 // requests made to /services will go to serviceRoutes.js file, 1st parameter is building the url, 2nd parameter is the physical directory, this 1st parameter needs to match the axios post in serviceForm.jsx in the front
