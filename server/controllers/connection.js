@@ -1,15 +1,20 @@
 const Sequelize = require("sequelize");
 require("dotenv").config();
 
-const sequelize = new Sequelize(process.env.DATABASE_URL, {
-  dialect: "postgres",
-  protocol: "postgres",
-  // disables logging in production
-  logging: false,
-  ssl: {
-    // required for secure HEROKU POSTGRESQL connections
-    rejectUnauthorized: false,
-  },
-});
+let sequelize;
+
+if (process.env.DATABASE_URL) {
+  sequelize = new Sequelize(process.env.DATABASE_URL);
+} else {
+  sequelize = new Sequelize(
+    process.env.DB_NAME,
+    process.env.DB_USER,
+    process.env.DB_PASSWORD,
+    {
+      host: "localhost",
+      dialect: "postgres",
+    }
+  );
+}
 
 module.exports = sequelize;

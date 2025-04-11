@@ -21,7 +21,7 @@ git clone https://github.com/galessalazar/rapid_refresh.git
 
  Authentication: JWT(JSON Web Tokens) for secure user logins
 
- Hosting: Netlify
+ Hosting: Frontend found on Vercel and Backend found on Heroku
 ```
 
 ## Contributing
