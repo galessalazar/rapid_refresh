@@ -13,32 +13,45 @@ app.use(express.urlencoded({ extended: true }));
 // required to post content to backend-converts to JSON OBJ, same as json.parse
 app.use(express.json());
 
+// restricts requests to only come from this frontend URL or the localhost
+// https://www.npmjs.com/package/cors
+
+const allowedOrigins = [
+  "https://rapid-refresh.vercel.app",
+  "http://localhost:5173",
+];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(newError("Not allowed by CORS"));
+    }
+  },
+};
+
+app.use(cors(corsOptions));
+
 // import routes and logic found at...
 
 const sequelize = require("./controllers/connection");
 const serviceRoutes = require("./routes/serviceRoutes");
 const contactRoutes = require("./routes/contactRoutes");
-// const { sequelize } = require('./models/index');
 
 const PORT = process.env.PORT || 3001;
-
-// restricts requests to only come from this frontend URL
-app.use(
-  cors({
-    origin: "https://rapid-refresh.vercel.app",
-  })
-);
-
-// this needs to remain outside of the below if statement to always include a default route
-app.get("/", (req, res) => {
-  res.send("API access");
-});
 
 if (process.env.NODE_ENV === "production") {
   console.log(process.env.NODE_ENV); // This will print 'production' or 'development'
 
   app.use(express.static(path.join(__dirname, "../client/dist")));
 }
+
+// this needs to remain outside of the below if statement to always include a default route
+app.get("/", (req, res) => {
+  res.send("API access");
+});
+
 // requests made to /services will go to serviceRoutes.js file, 1st parameter is building the url, 2nd parameter is the physical directory, this 1st parameter needs to match the axios post in serviceForm.jsx in the front
 
 // removed /api to test connection
