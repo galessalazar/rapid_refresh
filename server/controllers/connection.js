@@ -3,28 +3,34 @@ require("dotenv").config();
 
 let sequelize;
 
+// SEE THIS FOR PRODUCTION
+
+// https://devcenter.heroku.com/articles/connecting-heroku-postgres#heroku-postgres-ssl
+
+// IF IN PRODUCTION RUN THIS
+
 if (process.env.DATABASE_URL) {
-  sequelize = new Sequelize(process.env.DATABASE_URL);
+  sequelize = new Sequelize(process.env.DATABASE_URL, {
+    
+    dialectOptions: {
+      ssl: {
+        rejectUnauthorized: false,
+      }
+    }
+  })
+// ELSE, RUN FOR DEVELOPMENT
 } else {
   sequelize = new Sequelize(
-    process.env.local.DB_NAME,
-    process.env.local.DB_USER,
-    process.env.local.DB_PASSWORD,
+    process.env.DB_NAME,
+    process.env.DB_USER,
+    process.env.DB_PASSWORD,
     {
-      host: "localhost",
+      host: process.env.DB_HOST ,
       dialect: "postgres",
     }
   );
 }
 
-async function test() {
-  try {
-  await sequelize.authenticate();
-  console.log('Connection has been established successfully.');
-} catch (error) {
-  console.error('Unable to connect to the database:', error);
-}
-}
-test();
+
 
 module.exports = sequelize;
