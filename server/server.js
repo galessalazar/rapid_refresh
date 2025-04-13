@@ -54,8 +54,8 @@ app.get("/", (req, res) => {
 
 // requests made to /services will go to serviceRoutes.js file, 1st parameter is building the url, 2nd parameter is the physical directory, this 1st parameter needs to match the axios post in serviceForm.jsx in the front
 
-// removed /api to test connection
-app.use("/services", serviceRoutes);
+// tells Express, any request to /api/services should go to serviceRoutes
+app.use("/api/services", serviceRoutes);
 // still need to setup all configurations
 app.use("/api", contactRoutes);
 
