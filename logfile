@@ -34,4 +34,59 @@
 2025-04-23 11:23:02.220 CDT [10524] HINT:  See C include file "ntstatus.h" for a description of the hexadecimal value.
 2025-04-23 11:23:02.221 CDT [10524] LOG:  terminating any other active server processes
 2025-04-23 11:23:02.234 CDT [10524] LOG:  received fast shutdown request
-^C
+^C2025-04-23 11:26:45.826 CDT [13464] LOG:  starting PostgreSQL 16.3, compiled by Visual C++ build 1939, 64-bit
+2025-04-23 11:26:45.831 CDT [13464] LOG:  listening on IPv6 address "::1", port 5432
+2025-04-23 11:26:45.831 CDT [13464] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2025-04-23 11:26:45.884 CDT [8812] LOG:  database system was interrupted; last known up at 2025-04-23 10:50:52 CDT
+2025-04-23 11:26:45.959 CDT [8812] LOG:  database system was not properly shut down; automatic recovery in progress
+2025-04-23 11:26:45.967 CDT [8812] LOG:  redo starts at 0/15A8C48
+2025-04-23 11:26:45.967 CDT [8812] LOG:  invalid record length at 0/15A8D30: expected at least 24, got 0
+2025-04-23 11:26:45.968 CDT [8812] LOG:  redo done at 0/15A8CF8 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2025-04-23 11:26:45.976 CDT [17724] LOG:  checkpoint starting: end-of-recovery immediate wait
+2025-04-23 11:26:45.994 CDT [17724] LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.004 s, sync=0.004 s, total=0.021 s; sync files=2, longest=0.002 s, average=0.002 s; distance=0 kB, estimate=0 kB; lsn=0/15A8D30, redo lsn=0/15A8D30
+2025-04-23 11:26:46.017 CDT [13464] LOG:  database system is ready to accept connections
+2025-04-23 11:27:10.322 CDT [20220] FATAL:  role "postgres" does not exist
+2025-04-23 11:27:16.930 CDT [16996] FATAL:  database "gales" does not exist
+2025-04-23 11:29:02.800 CDT [15164] FATAL:  database "rapid_refresh" does not exist
+2025-04-23 11:29:15.468 CDT [18008] FATAL:  database "rapid_refresh" does not exist
+2025-04-23 11:29:32.736 CDT [10124] ERROR:  syntax error at or near "CREATE" at character 31
+2025-04-23 11:29:32.736 CDT [10124] STATEMENT:  CREATE DATABASE rapid_refresh
+	CREATE DATABASE rapid_refresh;
+2025-04-23 11:31:46.008 CDT [17724] LOG:  checkpoint starting: time
+2025-04-23 11:32:37.881 CDT [4820] FATAL:  role "postgres" does not exist
+2025-04-23 11:32:46.508 CDT [19680] FATAL:  role "postgres" does not exist
+2025-04-23 11:33:04.302 CDT [15104] FATAL:  role "postgres" does not exist
+2025-04-23 11:33:32.156 CDT [17724] LOG:  checkpoint complete: wrote 972 buffers (5.9%); 0 WAL file(s) added, 0 removed, 0 recycled; write=105.885 s, sync=0.253 s, total=106.148 s; sync files=300, longest=0.004 s, average=0.001 s; distance=4599 kB, estimate=4599 kB; lsn=0/1A26A38, redo lsn=0/1A26A00
+2025-04-23 11:33:36.918 CDT [19660] FATAL:  role "postgres" does not exist
+2025-04-23 11:35:38.942 CDT [14668] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2025-04-23 11:36:46.189 CDT [17724] LOG:  checkpoint starting: time
+2025-04-23 11:36:47.087 CDT [17724] LOG:  checkpoint complete: wrote 8 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.877 s, sync=0.007 s, total=0.898 s; sync files=3, longest=0.004 s, average=0.003 s; distance=31 kB, estimate=4142 kB; lsn=0/1A2E950, redo lsn=0/1A2E918
+2025-04-23 11:40:41.071 CDT [7004] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2025-04-23 11:45:41.693 CDT [4816] ERROR:  syntax error at or near "/" at character 1
+2025-04-23 11:45:41.693 CDT [4816] STATEMENT:  /d
+	/d service 
+	CREATE TABLE IF NOT EXISTS "service" (
+	  "service_id" SERIAL PRIMARY KEY,
+	  "service_name" VARCHAR(255),
+	  "service_description" TEXT,
+	  "cost_of_service" INTEGER,
+	  "estimated_time" INTEGER
+	);
+2025-04-23 11:46:46.103 CDT [17724] LOG:  checkpoint starting: time
+2025-04-23 11:46:51.688 CDT [17724] LOG:  checkpoint complete: wrote 51 buffers (0.3%); 0 WAL file(s) added, 0 removed, 0 recycled; write=5.502 s, sync=0.063 s, total=5.586 s; sync files=42, longest=0.003 s, average=0.002 s; distance=159 kB, estimate=3744 kB; lsn=0/1A56760, redo lsn=0/1A56728
+2025-04-23 11:51:46.702 CDT [17724] LOG:  checkpoint starting: time
+2025-04-23 11:51:48.150 CDT [17724] LOG:  checkpoint complete: wrote 13 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=1.419 s, sync=0.011 s, total=1.448 s; sync files=8, longest=0.002 s, average=0.002 s; distance=17 kB, estimate=3371 kB; lsn=0/1A5AF20, redo lsn=0/1A5AEE8
+2025-04-23 11:56:46.164 CDT [17724] LOG:  checkpoint starting: time
+2025-04-23 11:56:46.740 CDT [17724] LOG:  checkpoint complete: wrote 5 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.543 s, sync=0.010 s, total=0.577 s; sync files=4, longest=0.003 s, average=0.003 s; distance=7 kB, estimate=3035 kB; lsn=0/1A5CD30, redo lsn=0/1A5CCF8
+2025-04-23 13:12:04.646 CDT [11012] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2025-04-23 13:12:13.323 CDT [21144] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2025-04-23 13:16:46.870 CDT [17724] LOG:  checkpoint starting: time
+2025-04-23 13:16:52.945 CDT [17724] LOG:  checkpoint complete: wrote 56 buffers (0.3%); 0 WAL file(s) added, 0 removed, 0 recycled; write=6.005 s, sync=0.048 s, total=6.076 s; sync files=49, longest=0.003 s, average=0.001 s; distance=279 kB, estimate=2759 kB; lsn=0/1AA2AD0, redo lsn=0/1AA2A60
+2025-04-23 13:21:46.960 CDT [17724] LOG:  checkpoint starting: time
+2025-04-23 13:21:47.298 CDT [17724] LOG:  checkpoint complete: wrote 4 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.321 s, sync=0.009 s, total=0.339 s; sync files=4, longest=0.003 s, average=0.003 s; distance=0 kB, estimate=2483 kB; lsn=0/1AA2E20, redo lsn=0/1AA2DE8
+2025-04-23 15:06:50.439 CDT [17724] LOG:  checkpoint starting: time
+2025-04-23 15:06:51.144 CDT [17724] LOG:  checkpoint complete: wrote 7 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.660 s, sync=0.016 s, total=0.707 s; sync files=7, longest=0.004 s, average=0.003 s; distance=1 kB, estimate=2235 kB; lsn=0/1AA3248, redo lsn=0/1AA3210
