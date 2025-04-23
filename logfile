@@ -90,3 +90,23 @@
 2025-04-23 13:21:47.298 CDT [17724] LOG:  checkpoint complete: wrote 4 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.321 s, sync=0.009 s, total=0.339 s; sync files=4, longest=0.003 s, average=0.003 s; distance=0 kB, estimate=2483 kB; lsn=0/1AA2E20, redo lsn=0/1AA2DE8
 2025-04-23 15:06:50.439 CDT [17724] LOG:  checkpoint starting: time
 2025-04-23 15:06:51.144 CDT [17724] LOG:  checkpoint complete: wrote 7 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.660 s, sync=0.016 s, total=0.707 s; sync files=7, longest=0.004 s, average=0.003 s; distance=1 kB, estimate=2235 kB; lsn=0/1AA3248, redo lsn=0/1AA3210
+2025-04-23 15:26:32.670 CDT [9692] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2025-04-23 15:26:50.161 CDT [17724] LOG:  checkpoint starting: time
+2025-04-23 15:26:54.136 CDT [17724] LOG:  checkpoint complete: wrote 37 buffers (0.2%); 0 WAL file(s) added, 0 removed, 0 recycled; write=3.921 s, sync=0.033 s, total=3.976 s; sync files=34, longest=0.003 s, average=0.001 s; distance=166 kB, estimate=2028 kB; lsn=0/1ACCDF8, redo lsn=0/1ACCD88
+2025-04-23 15:27:01.046 CDT [2728] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2025-04-23 15:31:50.139 CDT [17724] LOG:  checkpoint starting: time
+2025-04-23 15:31:55.657 CDT [17724] LOG:  checkpoint complete: wrote 51 buffers (0.3%); 0 WAL file(s) added, 0 removed, 0 recycled; write=5.456 s, sync=0.044 s, total=5.519 s; sync files=40, longest=0.002 s, average=0.002 s; distance=247 kB, estimate=1850 kB; lsn=0/1B0AA90, redo lsn=0/1B0AA58
+2025-04-23 15:56:50.692 CDT [17724] LOG:  checkpoint starting: time
+2025-04-23 15:56:55.810 CDT [17724] LOG:  checkpoint complete: wrote 47 buffers (0.3%); 0 WAL file(s) added, 0 removed, 0 recycled; write=5.025 s, sync=0.059 s, total=5.119 s; sync files=40, longest=0.003 s, average=0.002 s; distance=245 kB, estimate=1689 kB; lsn=0/1B48110, redo lsn=0/1B480D8
+2025-04-23 15:59:00.150 CDT [6412] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2025-04-23 15:59:05.490 CDT [22760] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2025-04-23 15:59:14.055 CDT [18868] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2025-04-23 16:01:50.819 CDT [17724] LOG:  checkpoint starting: time
+2025-04-23 16:01:58.501 CDT [17724] LOG:  checkpoint complete: wrote 70 buffers (0.4%); 0 WAL file(s) added, 0 removed, 0 recycled; write=7.551 s, sync=0.078 s, total=7.683 s; sync files=69, longest=0.003 s, average=0.002 s; distance=470 kB, estimate=1568 kB; lsn=0/1BBDBA8, redo lsn=0/1BBDB70
+2025-04-23 16:06:50.508 CDT [17724] LOG:  checkpoint starting: time
+2025-04-23 16:06:54.833 CDT [17724] LOG:  checkpoint complete: wrote 40 buffers (0.2%); 0 WAL file(s) added, 0 removed, 0 recycled; write=4.277 s, sync=0.030 s, total=4.326 s; sync files=38, longest=0.002 s, average=0.001 s; distance=229 kB, estimate=1434 kB; lsn=0/1BF7368, redo lsn=0/1BF7330

@@ -17,7 +17,7 @@ app.use(express.json());
 // https://www.npmjs.com/package/cors
 
 const allowedOrigins = [
-  "https://rapid-refresh.vercel.app",
+  "https://rapid-refresh.onrender.com",
   "http://localhost:5173",
 ];
 
@@ -26,7 +26,7 @@ const corsOptions = {
     if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
       callback(null, true);
     } else {
-      callback(newError("Not allowed by CORS"));
+      callback(new Error("Not allowed by CORS"));
     }
   },
 };
@@ -68,6 +68,7 @@ sequelize
 
     // Only sync if connected successfully
     return sequelize.sync({ force: true });
+    // REMOVE FORCE TRUE ENTIRELY AFTER PRODUCTION, will drop tables everytime server restarts
   })
   .then(() => {
     app.listen(PORT, () =>
