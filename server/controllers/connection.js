@@ -9,7 +9,8 @@ let sequelize;
 
 // IF IN PRODUCTION RUN THIS
 
-if (process.env.DATABASE_URL) {
+// connection string used by Sequelize to connect to PostgreSQL
+if (process.env.NODE_ENV === 'production' && process.env.DATABASE_URL) {
   sequelize = new Sequelize(process.env.DATABASE_URL, {
     
     dialectOptions: {
@@ -26,6 +27,7 @@ if (process.env.DATABASE_URL) {
     process.env.DB_PASSWORD,
     {
       host: process.env.DB_HOST ,
+      port: process.env.DB_PORT || 5432,
       dialect: "postgres",
     }
   );

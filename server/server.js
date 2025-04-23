@@ -49,7 +49,7 @@ if (process.env.NODE_ENV === "production") {
 
 // this needs to remain outside of the below if statement to always include a default route
 app.get("/", (req, res) => {
-  res.send("API access");
+  res.send("API access at localhost:3001");
 });
 
 // requests made to /services will go to serviceRoutes.js file, 1st parameter is building the url, 2nd parameter is the physical directory, this 1st parameter needs to match the axios post in serviceForm.jsx in the front
@@ -59,6 +59,26 @@ app.use("/api/services", serviceRoutes);
 // still need to setup all configurations
 app.use("/api", contactRoutes);
 
-sequelize.sync({ force: true }).then(() => {
-  app.listen(PORT, () => console.log(`API server running on port ${PORT} `));
-});
+
+
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log("💡 Connected to DB:", sequelize.getDatabaseName());
+
+    // Only sync if connected successfully
+    return sequelize.sync({ force: true });
+  })
+  .then(() => {
+    app.listen(PORT, () =>
+      console.log(`✅ API server running on port ${PORT}`)
+    );
+  })
+  .catch((err) => {
+    console.error("❌ Unable to connect to the database:", err);
+  });
+
+
+// sequelize.sync({ force: false }).then(() => {
+//   app.listen(PORT, () => console.log(`API server running on port ${PORT} `));
+// });

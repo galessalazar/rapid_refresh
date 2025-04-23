@@ -1,20 +1,28 @@
 import axios from "axios";
 
-const BASE_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3001";
 
-console.log("API is pointing to:", BASE_URL);
 
-const api = axios.create({
-  baseURL: BASE_URL + "/api",
+
+
+
+console.log("API is pointing to:",
+  //  BASE_URL
+  );
+
+// setting up Axios to send HTTP requests to Express backend
+// https://axios-http.com/docs/instance
+
+const api = axios.create({ baseURL:"/api",
+  // baseURL: BASE_URL + "/api",
   headers: {
     "Content-Type": "application/json",
   },
 });
 
 // Sends GET request to localhost or heroku URL
+// https://axios-http.com/docs/res_schema
 
-api
-  .get("/services")
+axios.get("/services")
   .then((response) => {
     console.log("Services fetched:", response.data);
   })

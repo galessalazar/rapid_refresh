@@ -9,8 +9,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     // this get needs to match the server.js url built
-    axios
-      .get("/services")
+    axios.get("/api/services")
       .then((response) => {
         setServices(response.data);
       })

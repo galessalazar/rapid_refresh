@@ -1,0 +1,37 @@
+2025-04-23 10:45:48.412 CDT [10524] LOG:  starting PostgreSQL 16.3, compiled by Visual C++ build 1939, 64-bit
+2025-04-23 10:45:48.417 CDT [10524] LOG:  listening on IPv6 address "::1", port 5432
+2025-04-23 10:45:48.417 CDT [10524] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2025-04-23 10:45:48.487 CDT [6764] LOG:  database system was shut down at 2025-04-23 10:44:19 CDT
+2025-04-23 10:45:48.517 CDT [10524] LOG:  database system is ready to accept connections
+2025-04-23 10:46:23.397 CDT [11880] FATAL:  role "postgres" does not exist
+2025-04-23 10:46:30.677 CDT [17004] FATAL:  role "postgres" does not exist
+2025-04-23 10:47:05.637 CDT [20216] FATAL:  role "-d" does not exist
+2025-04-23 10:47:21.435 CDT [7496] FATAL:  role "postgres" does not exist
+2025-04-23 10:48:26.669 CDT [13316] FATAL:  database "gales" does not exist
+2025-04-23 10:49:01.260 CDT [3912] FATAL:  role "postgres" does not exist
+2025-04-23 10:50:07.465 CDT [14724] FATAL:  role "postgres" does not exist
+2025-04-23 10:50:48.479 CDT [10576] LOG:  checkpoint starting: time
+2025-04-23 10:50:52.342 CDT [10576] LOG:  checkpoint complete: wrote 38 buffers (0.2%); 0 WAL file(s) added, 0 removed, 0 recycled; write=3.822 s, sync=0.016 s, total=3.864 s; sync files=11, longest=0.002 s, average=0.002 s; distance=197 kB, estimate=197 kB; lsn=0/15A8C80, redo lsn=0/15A8C48
+2025-04-23 10:53:33.098 CDT [19284] FATAL:  database "rapid_refresh" does not exist
+2025-04-23 11:08:07.155 CDT [5876] FATAL:  role "postgres" does not exist
+2025-04-23 11:08:44.822 CDT [144] FATAL:  database "gales" does not exist
+2025-04-23 11:18:18.117 CDT [9652] FATAL:  role "postgres" does not exist
+2025-04-23 11:18:27.816 CDT [6420] FATAL:  role "postgres" does not exist
+2025-04-23 11:20:38.873 CDT [19724] FATAL:  role "postgres" does not exist
+2025-04-23 11:23:02.220 CDT [10524] LOG:  server process (PID 7100) was terminated by exception 0xC000013A
+2025-04-23 11:23:02.220 CDT [10524] DETAIL:  Failed process was running: SELECT
+	  d.datname as "Name",
+	  pg_catalog.pg_get_userbyid(d.datdba) as "Owner",
+	  pg_catalog.pg_encoding_to_char(d.encoding) as "Encoding",
+	  CASE d.datlocprovider WHEN 'c' THEN 'libc' WHEN 'i' THEN 'icu' END AS "Locale Provider",
+	  d.datcollate as "Collate",
+	  d.datctype as "Ctype",
+	  d.daticulocale as "ICU Locale",
+	  d.daticurules as "ICU Rules",
+	  pg_catalog.array_to_string(d.datacl, E'\n') AS "Access privileges"
+	FROM pg_catalog.pg_database d
+	ORDER BY 1;
+2025-04-23 11:23:02.220 CDT [10524] HINT:  See C include file "ntstatus.h" for a description of the hexadecimal value.
+2025-04-23 11:23:02.221 CDT [10524] LOG:  terminating any other active server processes
+2025-04-23 11:23:02.234 CDT [10524] LOG:  received fast shutdown request
+^C
