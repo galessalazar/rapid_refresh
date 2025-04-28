@@ -110,3 +110,51 @@
 2025-04-23 16:01:58.501 CDT [17724] LOG:  checkpoint complete: wrote 70 buffers (0.4%); 0 WAL file(s) added, 0 removed, 0 recycled; write=7.551 s, sync=0.078 s, total=7.683 s; sync files=69, longest=0.003 s, average=0.002 s; distance=470 kB, estimate=1568 kB; lsn=0/1BBDBA8, redo lsn=0/1BBDB70
 2025-04-23 16:06:50.508 CDT [17724] LOG:  checkpoint starting: time
 2025-04-23 16:06:54.833 CDT [17724] LOG:  checkpoint complete: wrote 40 buffers (0.2%); 0 WAL file(s) added, 0 removed, 0 recycled; write=4.277 s, sync=0.030 s, total=4.326 s; sync files=38, longest=0.002 s, average=0.001 s; distance=229 kB, estimate=1434 kB; lsn=0/1BF7368, redo lsn=0/1BF7330
+2025-04-23 16:08:27.342 CDT [23064] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2025-04-23 16:08:31.120 CDT [16996] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2025-04-23 16:11:50.844 CDT [17724] LOG:  checkpoint starting: time
+2025-04-23 16:11:59.956 CDT [17724] LOG:  checkpoint complete: wrote 83 buffers (0.5%); 1 WAL file(s) added, 0 removed, 0 recycled; write=8.923 s, sync=0.050 s, total=9.113 s; sync files=53, longest=0.003 s, average=0.001 s; distance=456 kB, estimate=1336 kB; lsn=0/1C69738, redo lsn=0/1C69700
+2025-04-23 16:36:50.992 CDT [17724] LOG:  checkpoint starting: time
+2025-04-23 16:36:55.647 CDT [17724] LOG:  checkpoint complete: wrote 43 buffers (0.3%); 0 WAL file(s) added, 0 removed, 0 recycled; write=4.598 s, sync=0.048 s, total=4.655 s; sync files=36, longest=0.004 s, average=0.002 s; distance=191 kB, estimate=1221 kB; lsn=0/1C99598, redo lsn=0/1C99560
+2025-04-23 16:41:50.655 CDT [17724] LOG:  checkpoint starting: time
+2025-04-23 16:41:51.344 CDT [17724] LOG:  checkpoint complete: wrote 7 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.657 s, sync=0.013 s, total=0.690 s; sync files=7, longest=0.003 s, average=0.002 s; distance=0 kB, estimate=1099 kB; lsn=0/1C99888, redo lsn=0/1C99850
+2025-04-23 16:56:50.378 CDT [17724] LOG:  checkpoint starting: time
+2025-04-23 16:56:54.794 CDT [17724] LOG:  checkpoint complete: wrote 41 buffers (0.3%); 0 WAL file(s) added, 0 removed, 0 recycled; write=4.358 s, sync=0.038 s, total=4.417 s; sync files=38, longest=0.002 s, average=0.001 s; distance=229 kB, estimate=1012 kB; lsn=0/1CE27C0, redo lsn=0/1CD2F58
+2025-04-23 16:57:12.926 CDT [13824] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2025-04-23 17:01:50.808 CDT [17724] LOG:  checkpoint starting: time
+2025-04-23 17:01:58.863 CDT [17724] LOG:  checkpoint complete: wrote 74 buffers (0.5%); 0 WAL file(s) added, 0 removed, 0 recycled; write=7.979 s, sync=0.054 s, total=8.055 s; sync files=45, longest=0.003 s, average=0.002 s; distance=323 kB, estimate=943 kB; lsn=0/1D23B90, redo lsn=0/1D23B58
+2025-04-23 19:23:07.045 CDT [17724] LOG:  checkpoint starting: time
+2025-04-23 19:23:08.285 CDT [17724] LOG:  checkpoint complete: wrote 12 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=1.204 s, sync=0.011 s, total=1.243 s; sync files=9, longest=0.002 s, average=0.002 s; distance=4 kB, estimate=849 kB; lsn=0/1D24E88, redo lsn=0/1D24E50
+2025-04-23 19:28:07.287 CDT [17724] LOG:  checkpoint starting: time
+2025-04-23 19:28:07.661 CDT [17724] LOG:  checkpoint complete: wrote 4 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.343 s, sync=0.008 s, total=0.375 s; sync files=4, longest=0.003 s, average=0.002 s; distance=1 kB, estimate=765 kB; lsn=0/1D25308, redo lsn=0/1D252D0
+2025-04-23 21:34:56.681 CDT [17724] LOG:  checkpoint starting: time
+2025-04-23 21:34:57.060 CDT [17724] LOG:  checkpoint complete: wrote 4 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.338 s, sync=0.012 s, total=0.380 s; sync files=4, longest=0.005 s, average=0.003 s; distance=1 kB, estimate=688 kB; lsn=0/1D257E8, redo lsn=0/1D257B0
+2025-04-24 18:09:56.234 CDT [13464] LOG:  server process (PID 20796) was terminated by exception 0xC000013A
+2025-04-24 18:09:56.234 CDT [13464] DETAIL:  Failed process was running: 
+	        SELECT
+	            roles.oid as id, roles.rolname as name,
+	            roles.rolsuper as is_superuser,
+	            CASE WHEN roles.rolsuper THEN true ELSE roles.rolcreaterole END as
+	            can_create_role,
+	            CASE WHEN roles.rolsuper THEN true
+	            ELSE roles.rolcreatedb END as can_create_db,
+	            CASE WHEN 'pg_signal_backend'=ANY(ARRAY(WITH RECURSIVE cte AS (
+	            SELECT pg_roles.oid,pg_roles.rolname FROM pg_roles
+	                WHERE pg_roles.oid = roles.oid
+	            UNION ALL
+	            SELECT m.roleid,pgr.rolname FROM cte cte_1
+	                JOIN pg_auth_members m ON m.member = cte_1.oid
+	                JOIN pg_roles pgr ON pgr.oid = m.roleid)
+	            SELECT rolname  FROM cte)) THEN True
+	            ELSE False END as can_signal_backend
+	        FROM
+	            pg_catalog.pg_roles as roles
+	        WHERE
+	            rolname = current_user
+2025-04-24 18:09:56.234 CDT [13464] HINT:  See C include file "ntstatus.h" for a description of the hexadecimal value.
+2025-04-24 18:09:56.234 CDT [13464] LOG:  terminating any other active server processes
+2025-04-24 18:09:56.305 CDT [13464] LOG:  received fast shutdown request
+^C

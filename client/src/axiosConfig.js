@@ -1,18 +1,15 @@
 import axios from "axios";
 
 
-
-
-
-
-console.log("API is pointing to:",
-  //  BASE_URL
-  );
-
 // setting up Axios to send HTTP requests to Express backend
 // https://axios-http.com/docs/instance
 
-const api = axios.create({ baseURL:"/api",
+// render url in env makes it easier to call, cannot use process.env need this to expose env variables to frontend, create only the local url here and add the viteapiurl to renders environment variables
+const apiUrl = import.meta.env.VITE_API_URL;
+console.log(import.meta.env.VITE_API_URL);
+
+const api = axios.create({
+  baseURL: import.meta.env.VITE_API_URL ,
   // baseURL: BASE_URL + "/api",
   headers: {
     "Content-Type": "application/json",
@@ -22,9 +19,10 @@ const api = axios.create({ baseURL:"/api",
 // Sends GET request to localhost or heroku URL
 // https://axios-http.com/docs/res_schema
 
-axios.get("/services")
+axios
+  .get(`${apiUrl}/api/services`)
   .then((response) => {
-    console.log("Services fetched:", response.data);
+    console.log(response.data);
   })
   .catch((error) => {
     console.error("Error fetching services:", error);

@@ -11,8 +11,23 @@ const Dashboard = () => {
     // this get needs to match the server.js url built
     axios.get("/api/services")
       .then((response) => {
-        setServices(response.data);
+        console.log("Response status:", response.status);
+    console.log("Raw response data:", response.data);
+
+        console.log("Response from /api/services:", response.data);
+
+        if (Array.isArray(response.data)) {
+          setServices(response.data);
+        } else if (Array.isArray(response.data.services)) {
+          setServices(response.data.services);
+        } else {
+          console.error("Unexpected data shape:", response.data);
+          setServices([]); // fallback to empty
+        }
       })
+
+      //   setServices(response.data);
+      // })
       .catch((error) => {
         console.error("Error fetching services:", error);
       });
