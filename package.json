@@ -14,5 +14,9 @@
   "devDependencies": {
     "concurrently": "^9.1.0",
     "sequelize-cli": "^6.6.2"
+  },
+  "dependencies": {
+    "class-variance-authority": "^0.7.1",
+    "lucide-react": "^0.503.0"
   }
 }
