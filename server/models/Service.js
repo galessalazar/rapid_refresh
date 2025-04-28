@@ -28,6 +28,7 @@ Service.init(
     sequelize,
     timestamps: false,
     freezeTableName: true,
+    // tables by convention are pluralized by sequelize because they represent a collection of records, makes it easier for other developers to understand structure, for simplicity this is ok
     underscored: true,
     modelName: "service",
   }
