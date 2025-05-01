@@ -19,7 +19,7 @@ function App() {
           {/* This creates the home path to separate the homepage from the others */}
           <Route path="/" element={<div></div>} />
           <Route path="/about" element={<AboutUs />} />
-          {/* <Route path="/services" element={<PublicServices />} /> */}
+          <Route path="/services" element={<PublicServices />} />
           <Route path="/contact" element={<Contact />} />
 
           {/* This provides a separate route for the dashboard */}
