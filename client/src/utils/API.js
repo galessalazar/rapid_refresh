@@ -7,6 +7,8 @@ const getServices = () => {
     return axios.get('/api/services')
 }
 
-export default {
+export default 
     getServices
-};
+;
+
+// handles the network request with axios
