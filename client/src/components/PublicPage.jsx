@@ -21,7 +21,7 @@ const PublicServices = () => {
       <h1>Services Available</h1>
       <ul>
         {services.map((service) => (
-          <li key={service.id || service._id}>
+          <li key={service.serviceId }>
             <h2>{service.name}</h2>
             <p>{service.description}</p>
             <p>{service.cost}</p>
