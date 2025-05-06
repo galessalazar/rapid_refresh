@@ -26,7 +26,8 @@ const Navbar = () => {
               </div>
             </Link>
           </div>
-
+          
+          {/* link buttons */}
           <div className="hidden sm:flex space-x-4">
             <Link
               to="/about"
