@@ -57,7 +57,7 @@ app.get("/", (req, res) => {
 // tells Express, any request to /api/services should go to serviceRoutes
 app.use("/api/services", serviceRoutes);
 // still need to setup all configurations
-app.use("/api", contactRoutes);
+app.use("/api/contact", contactRoutes);
 
 
 
