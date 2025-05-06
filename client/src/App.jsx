@@ -7,6 +7,7 @@ import Dashboard from "./components/Dashboard";
 import AboutUs from "./components/AboutUs";
 import Contact from "./components/Contact";
 import PublicServices from "./components/PublicPage";
+import Hero from "./components/Hero";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -15,9 +16,10 @@ function App() {
     <>
       <BrowserRouter>
         <Navbar />
+
         <Routes>
           {/* This creates the home path to separate the homepage from the others */}
-          <Route path="/" element={<div></div>} />
+          <Route path="/" element={<Hero />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/services" element={<PublicServices />} />
           <Route path="/contact" element={<Contact />} />
