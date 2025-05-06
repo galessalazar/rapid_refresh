@@ -20,11 +20,13 @@ const PublicServices = () => {
     <div>
       <h1>Services Available</h1>
       <ul>
+        {/* Mapping each service object, property names must match those defined in the backend model */}
+
         {services.map((service) => (
-          <li key={service.serviceId }>
-            <h2>{service.name}</h2>
-            <p>{service.description}</p>
-            <p>{service.cost}</p>
+          <li key={service.serviceId}>
+            <h2>{service.serviceName}</h2>
+            <p>{service.serviceDescription}</p>
+            <p>{service.costOfService}</p>
           </li>
         ))}
       </ul>

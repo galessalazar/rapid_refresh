@@ -1,6 +1,5 @@
 const { Model, DataTypes } = require("sequelize");
-const sequelize = require('../controllers/connection')
-
+const sequelize = require("../controllers/connection");
 
 class Service extends Model {}
 

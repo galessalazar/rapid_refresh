@@ -8,7 +8,6 @@ const ServiceList = ({ services, onDeleteService }) => {
   console.log("services data:", services);
   return (
     <ul>
-        
       {services.map((service) => (
         <li key={service.serviceId}>
           <strong>{service.serviceName}</strong> - ${service.costOfService}

@@ -11,6 +11,7 @@ import {
 } from "./Test";
 
 const ServiceForm = ({ onAddService }) => {
+  // newservice is the state variable holding current values and setnewservice is the function that updates the state variable, can call anywhere in the newservice obj you want changes
   const [newService, setNewService] = useState({
     serviceName: "",
     serviceDescription: "",
@@ -28,9 +29,11 @@ const ServiceForm = ({ onAddService }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
+    // sends the new services to backend point with  the new service data from form
       .post("/api/services", newService)
       .then((response) => {
         onAddService(response.data);
+        // resets the fields to blank
         setNewService({
           serviceName: "",
           serviceDescription: "",
