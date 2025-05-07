@@ -10,7 +10,8 @@
   
       margin: 0;
       display: flex;
-      place-items: center;
+justify-content: space-between;
+align-items: center;
       min-width: 320px;
       min-height: 100vh;  
      background-color: aqua;
@@ -30,19 +31,7 @@ h1 {
   /* text-align: left; */
 }
 
-/* .title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-left: 0;
-} */
-/* once i created this for this class that hamburger menu appeared get rid of this if you want im trying to move the company name to the far left */
-/* .flex  {
-  display: flex;
-  justify-content: space-between;
-  align-items: center; 
-  margin-left: 0;
-} */
+
 
  
 
@@ -66,7 +55,6 @@ h1 {
 
 position: relative;
 top: .5em;
-  font-size: 50px;
   font-variation-settings:
   'FILL' 0,
   'wght' 400,
@@ -77,10 +65,14 @@ top: .5em;
 
 
 
-@media (prefers-color-scheme: light) {
+@media ( max-width: 768px) {
   :root {
-    color: #213547;
-    background-color: #fdfefe;
+    body {
+      flex-direction: column;
+      color: #213547;
+    background-color: #18d4d4;
+    }
+    
   }
 
 

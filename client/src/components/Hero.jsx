@@ -1,20 +1,18 @@
 import React from "react";
+// not sure i need to import the css
+import "../App.css"
 const Hero = () => {
-    return (
-        <section>
-            <div>
-                <span className="material-symbols-outlined"> dry_cleaning</span>
-                <span className="material-symbols-outlined"> local_laundry_service</span>
-                <span className="material-symbols-outlined"> cleaning </span>
-                <span className="material-symbols-outlined"> cleaning_services</span>
+  return (
+    <section>
+      <div className=" w-full px-8 flex justify-evenly ">
+        <span className="material-symbols-outlined text-[200px]"> dry_cleaning</span>
+        <span className="material-symbols-outlined text-[200px]">local_laundry_service</span>
+        <span className="material-symbols-outlined text-[200px]"> cleaning </span>
+        <span className="material-symbols-outlined text-[200px]"> cleaning_services</span>
 
-                
-                
-               
-                
-            </div>
-        </section>
-    )
-}
+      </div>
+    </section>
+  );
+};
 
 export default Hero;
