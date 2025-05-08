@@ -3,7 +3,7 @@
   display: flex;
   justify-content: space-between;
 }
-body {
+body, #root {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
@@ -23,10 +23,10 @@ h1 {
   /* text-align: left; */
 }
 
-.flex {
+/* .flex {
   display: flex;
   align-items: center;
-}
+} */
 
 /* .hidden {
  display: none;
@@ -38,8 +38,8 @@ h1 {
 }
 
 .material-symbols-outlined {
-  position: relative;
-  top: 0.5em;
+
+
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
 }
 
