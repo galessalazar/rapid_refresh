@@ -4,19 +4,19 @@ import "../App.css";
 const Hero = () => {
   return (
     <section className="w-full px-8">
-      <div className="flex flex-col sm:flex-row justify-evenly ">
-        <span className="material-symbols-outlined text-[200px]">
+      <div className="flex flex-col sm:flex-row justify-evenly sm:space-x-4 space-y-4 sm:space-y-0">
+        <span className="material-symbols-outlined text-8xl sm:text-[200px]">
           {" "}
           dry_cleaning
         </span>
-        <span className="material-symbols-outlined text-[200px]">
+        <span className="material-symbols-outlined text-8xl sm:text-[200px]">
           local_laundry_service
         </span>
-        <span className="material-symbols-outlined text-[200px]">
+        <span className="material-symbols-outlined text-8xl sm:text-[200px]">
           {" "}
           cleaning{" "}
         </span>
-        <span className="material-symbols-outlined text-[200px]">
+        <span className="material-symbols-outlined text-8xl sm:text-[200px]">
           {" "}
           cleaning_services
         </span>
