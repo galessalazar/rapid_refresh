@@ -12,7 +12,7 @@ const Navbar = () => {
         <div className=" flex  h-16 items-center justify-between">
           {/* title and icons section */}
           <div className="flex items-center space-x-2">
-            <Link to="/" className="flex items-center text-white">
+            <Link to="/" onClick={() => setIsOpen(false)} className="flex items-center text-white">
               <h1 className=" text-2xl sm:text-4xl font-bold">
                 Rapid Refresh!
               </h1>

@@ -3,7 +3,7 @@ import React from "react";
 import "../App.css";
 const Hero = () => {
   return (
-    <section className="w-full px-8">
+    <section className="w-full">
       <div className="flex flex-col sm:flex-row justify-evenly sm:space-x-4 space-y-4 sm:space-y-0">
         <span className="material-symbols-outlined text-8xl sm:text-[200px]">
           {" "}
