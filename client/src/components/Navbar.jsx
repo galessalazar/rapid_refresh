@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+  // think of false as OFF
   const [isOpen, setIsOpen] = useState(false);
   return (
     //  fixed keeps it stuck to top of page

@@ -4,7 +4,7 @@ import "../App.css";
 const Hero = () => {
   return (
     <section className="w-full px-8">
-      <div className="  flex justify-evenly ">
+      <div className="flex flex-col sm:flex-row justify-evenly ">
         <span className="material-symbols-outlined text-[200px]">
           {" "}
           dry_cleaning
