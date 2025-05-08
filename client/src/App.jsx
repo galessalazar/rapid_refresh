@@ -16,17 +16,19 @@ function App() {
     <>
       <BrowserRouter>
         <Navbar />
+        {/* applied this to directly impact all pages */}
+        <div className="pt-24 pl-24">
+          <Routes>
+            {/* This creates the home path to separate the homepage from the others */}
+            <Route path="/" element={<Hero />} />
+            <Route path="/about" element={<AboutUs />} />
+            <Route path="/services" element={<PublicServices />} />
+            <Route path="/contact" element={<Contact />} />
 
-        <Routes>
-          {/* This creates the home path to separate the homepage from the others */}
-          <Route path="/" element={<Hero />} />
-          <Route path="/about" element={<AboutUs />} />
-          <Route path="/services" element={<PublicServices />} />
-          <Route path="/contact" element={<Contact />} />
-
-          {/* This provides a separate route for the dashboard */}
-          <Route path="/dashboard" element={<Dashboard />} />
-        </Routes>
+            {/* This provides a separate route for the dashboard */}
+            <Route path="/dashboard" element={<Dashboard />} />
+          </Routes>
+        </div>
       </BrowserRouter>
     </>
   );

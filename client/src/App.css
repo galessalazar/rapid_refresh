@@ -1,25 +1,22 @@
-#root{
+#root {
   width: 100%;
   display: flex;
   justify-content: space-between;
 }
-  body {
+body {
+  /* added after navbar hid service form */
+  /* padding-top: 240px; */
 
-  
-      margin: 0;
-      display: flex;
-justify-content: space-between;
-align-items: center;
-      min-width: 320px;
-      min-height: 100vh;  
-     background-color: aqua;
-  }
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: aqua;
+}
 .navBar {
   position: fixed;
   top: 0;
   width: 100%;
   left: 0;
-  
 }
 h1 {
   font-family: "Bruno Ace", sans-serif;
@@ -29,48 +26,31 @@ h1 {
   /* text-align: left; */
 }
 
-
-
- 
-
 .flex {
+  display: flex;
   align-items: center;
 }
 
-.hidden {
-  margin-left:-25%;
-  
-}
-
+/* .hidden {
+ display: none;
+} */
 
 .nav.bg-gray-800 {
+  
   display: block;
   text-align: end;
 }
 
 .material-symbols-outlined {
- 
-
-position: relative;
-top: .5em;
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 24
+  position: relative;
+  top: 0.5em;
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
 }
 
-
-
-
-@media ( max-width: 768px) {
-    body {
-      flex-direction: column;
-      color: #213547;
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+    color: #213547;
     background-color: #18d4d4;
-    }
-    
-  
-
-
+  }
 }
