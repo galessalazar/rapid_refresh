@@ -16,8 +16,8 @@ function App() {
     <>
       <BrowserRouter>
         <Navbar />
-        {/* applied this to directly impact all pages */}
-        <div className="pt-24 pl-24">
+        {/* added padding div to impact all pages */}
+        <div className="pt-20 sm:pt-24 px-4">
           <Routes>
             {/* This creates the home path to separate the homepage from the others */}
             <Route path="/" element={<Hero />} />

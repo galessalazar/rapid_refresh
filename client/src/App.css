@@ -4,9 +4,6 @@
   justify-content: space-between;
 }
 body {
-  /* added after navbar hid service form */
-  /* padding-top: 240px; */
-
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
@@ -36,7 +33,6 @@ h1 {
 } */
 
 .nav.bg-gray-800 {
-  
   display: block;
   text-align: end;
 }
