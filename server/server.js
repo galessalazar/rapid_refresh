@@ -58,10 +58,11 @@ app.get("/", (req, res) => {
 app.use("/api/services", serviceRoutes);
 // still need to setup all configurations
 app.use("/api/contact", contactRoutes);
-
-app.use(express.static(path.join(__dirname, "dist")));
+// serve the static files like index.html, .css from dist __dirname gives the current directory, path.join ensures always points to the right location 
+app.use(express.static(path.join(__dirname, "../client/dist")));
+// catches all routes not matched and sends back index.html no matter the path
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "dist", "index.html"));
+  res.sendFile(path.join(__dirname, "../client/dist", "index.html"));
 });
 
 sequelize
