@@ -25,19 +25,19 @@ function AboutUs() {
       <h2>Why Choose Us?</h2>
       <ul>
         <li>
-          <strong>Experience Professionals:</strong>Our team is fully trained
+          <strong>Experienced Professionals:</strong> Our team is fully trained
           and passionate about delivering exceptional cleaning results.
         </li>
         <li>
-          <strong>Eco-friendly:</strong>We use environmentally friendly cleaning
+          <strong>Eco-friendly:</strong> We use environmentally friendly cleaning
           products that are safe for your family, pets, and the planet.
         </li>
         <li>
-          <strong>Customizable Services:</strong>From deep cleaning to regular
+          <strong>Customizable Services:</strong> From deep cleaning to regular
           maintenance, we tailor our services to fit your needs and budget.
         </li>
         <li>
-          <strong>Satisfaction Guaranteed:</strong>We're not happy unless you're
+          <strong>Satisfaction Guaranteed:</strong> We're not happy unless you're
           happy. If you're not satisfied with our work, we'll make it right.
         </li>
       </ul>
@@ -50,7 +50,7 @@ function AboutUs() {
         <li>Special Requests: Need something unique? We can customize our services to fit your </li>
       </ul>
       <h2>Get In Touch</h2>
-      <p>Have questions or want to schedule a cleaning? Feel free to <a href="/contact">Contact Us</a>! We'd love to help you create a cleaner, heathier space.</p>
+      <p>Have questions or want to schedule a cleaning? Feel free to <a href="/contact"><strong>Contact Us</strong></a>! We'd love to help you create a cleaner, heathier space.</p>
     </section>
   );
 }
