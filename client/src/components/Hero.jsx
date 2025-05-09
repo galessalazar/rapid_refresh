@@ -11,16 +11,30 @@ const Hero = () => {
             dry_cleaning
           </span>
         </div>
-
-        <span className="material-symbols-outlined text-8xl sm:text-[200px]">
-          local_laundry_service
-        </span>
-        <span className="material-symbols-outlined text-8xl sm:text-[200px]">
-          cleaning
-        </span>
-        <span className="material-symbols-outlined text-8xl sm:text-[200px]">
-          cleaning_services
-        </span>
+        <div className="flex flex-col items-center space-y-1 sm:flex-row justify-evenly">
+          <div className="flex flex-col items-center gap-0.5">
+            <p className="text-lg font-semibold">Dishes</p>
+            <span className="material-symbols-outlined text-8xl sm:text-[200px]">
+              local_laundry_service
+            </span>
+          </div>
+        </div>
+        <div className="flex flex-col items-center space-y-1 sm:flex-row justify-evenly">
+          <div className="flex flex-col items-center gap-0.5">
+            <p className="text-lg font-semibold">Sanitization</p>
+            <span className="material-symbols-outlined text-8xl sm:text-[200px]">
+              cleaning
+            </span>
+          </div>
+        </div>
+        <div className="flex flex-col items-center space-y-1 sm:flex-row justify-evenly">
+          <div className="flex flex-col items-center gap-0.5">
+            <p className="text-lg font-semibold">Floor Cleaning</p>
+            <span className="material-symbols-outlined text-8xl sm:text-[200px]">
+              cleaning_services
+            </span>
+          </div>
+        </div>
       </div>
     </section>
   );
