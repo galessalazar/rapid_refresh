@@ -59,7 +59,10 @@ app.use("/api/services", serviceRoutes);
 // still need to setup all configurations
 app.use("/api/contact", contactRoutes);
 
-
+app.use(express.static(path.join(__dirname, "dist")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "dist", "index.html"));
+});
 
 sequelize
   .authenticate()
@@ -78,7 +81,6 @@ sequelize
   .catch((err) => {
     console.error("❌ Unable to connect to the database:", err);
   });
-
 
 // sequelize.sync({ force: false }).then(() => {
 //   app.listen(PORT, () => console.log(`API server running on port ${PORT} `));
