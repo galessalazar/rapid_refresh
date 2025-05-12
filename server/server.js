@@ -1,6 +1,9 @@
 const express = require("express");
 require("dotenv").config();
 const path = require("path");
+const { authMiddleware } = require('./utils/auth');
+const authRoutes = require('./routes/authRoutes');
+
 const cors = require("cors");
 // /must place prior to any routes or it wont work
 
@@ -12,6 +15,12 @@ app.use(express.urlencoded({ extended: true }));
 // middleware, receive a string format, you can parse into an obj or array to work w/in code, then makes it accessible in req.body
 // required to post content to backend-converts to JSON OBJ, same as json.parse
 app.use(express.json());
+
+//  app.use(expressMiddleware(server, {
+//     context: authMiddleware
+//   }));
+
+  app.use('/api', authRoutes);
 
 // restricts requests to only come from this frontend URL or the localhost
 // https://www.npmjs.com/package/cors
