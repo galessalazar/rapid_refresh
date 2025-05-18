@@ -4,7 +4,8 @@ const express = require("express");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
 
-const SECRET_KEY = "abcde12345";
+
+const SECRET_KEY = process.env.SECRET_KEY;
 
 
 //REQUIRES UPDATED DATA

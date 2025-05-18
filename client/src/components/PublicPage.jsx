@@ -18,7 +18,7 @@ const PublicServices = () => {
 
   return (
     <div>
-      <h1>Services Available</h1>
+      <h1 className="bruno-heading">Services Available</h1>
       <ul>
         {/* Mapping each service object, property names must match those defined in the backend model */}
 

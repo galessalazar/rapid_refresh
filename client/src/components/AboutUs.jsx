@@ -3,7 +3,7 @@ import React from "react";
 function AboutUs() {
   return (
     <section className="about-us">
-      <h1>About Us</h1>
+      <h1 className="bruno-heading">About Us</h1>
       <p>Welcome to Rapid Refresh-Your Trusted Cleaning Partner!</p>
       <p>
         At Rapid Refresh, we understand that a clean space is a happy space.

@@ -69,6 +69,7 @@ const ServiceForm = ({ onAddService }) => {
 
   return (
     <ToastProvider>
+      
       <form onSubmit={handleSubmit}>
         <input
           type="text"

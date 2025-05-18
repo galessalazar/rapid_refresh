@@ -20,7 +20,7 @@ app.use(express.json());
 //     context: authMiddleware
 //   }));
 
-  app.use('/api', authRoutes);
+ 
 
 // restricts requests to only come from this frontend URL or the localhost
 // https://www.npmjs.com/package/cors
@@ -42,6 +42,9 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
+// serve the static files like index.html, .css from dist __dirname gives the current directory, path.join ensures always points to the right location 
+app.use(express.static(path.join(__dirname, "../client/dist")));
+
 // import routes and logic found at...
 
 const sequelize = require("./controllers/connection");
@@ -53,23 +56,25 @@ const PORT = process.env.PORT || 3001;
 if (process.env.NODE_ENV === "production") {
   console.log(process.env.NODE_ENV); // This will print 'production' or 'development'
 
-  app.use(express.static(path.join(__dirname, "../client/dist")));
+  // app.use(express.static(path.join(__dirname, "../client/dist")));
 }
+
+
+
+// requests made to /services will go to serviceRoutes.js file, 1st parameter is building the url, 2nd parameter is the physical directory, this 1st parameter needs to match the axios post in serviceForm.jsx in the front
+
+// tells Express, any request to /api/services should go to serviceRoutes
+app.use('/api', authRoutes);
+app.use("/api/services", serviceRoutes);
+// still need to setup all configurations
+app.use("/api/contact", contactRoutes);
 
 // this needs to remain outside of the below if statement to always include a default route
 app.get("/", (req, res) => {
   res.send("API access at localhost:3001");
 });
 
-// requests made to /services will go to serviceRoutes.js file, 1st parameter is building the url, 2nd parameter is the physical directory, this 1st parameter needs to match the axios post in serviceForm.jsx in the front
-
-// tells Express, any request to /api/services should go to serviceRoutes
-app.use("/api/services", serviceRoutes);
-// still need to setup all configurations
-app.use("/api/contact", contactRoutes);
-// serve the static files like index.html, .css from dist __dirname gives the current directory, path.join ensures always points to the right location 
-app.use(express.static(path.join(__dirname, "../client/dist")));
-// catches all routes not matched and sends back index.html no matter the path
+// catches all routes not matched and sends back index.html no matter the path, must be last
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/dist", "index.html"));
 });

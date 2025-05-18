@@ -1,0 +1,12 @@
+// // https://ui.shadcn.com/docs/installation/vite
+// // this is a dummy file that allows shadcn to proceed
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    }
+  }
+}

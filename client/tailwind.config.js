@@ -1,19 +1,18 @@
 
 
-// tailwind.config.js
-const defaultTheme = require('tailwindcss/defaultTheme')
-
+/** @type {import('tailwindcss').Config} */
 module.exports = {
+  prefix: '',
   content: [
-    'index.html',
+    './index.html',
     './src/**/*.{js,ts,jsx,tsx}',
+
   ],
   theme: {
-    extend: {
-      fontFamily: {
-        sans: ['InterVariable', ...defaultTheme.fontFamily.sans],
-      },
-    },
+    extend: {},
   },
-  // ...
+  plugins: [],
 }
+
+
+
