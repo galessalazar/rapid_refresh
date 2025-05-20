@@ -16,7 +16,7 @@ const Navbar = () => {
               onClick={() => setIsOpen(false)}
               className="flex items-center text-white"
             >
-              <h1 className="bruno-heading font-bold">
+              <h1 className="bruno-heading text-2xl sm:text-4xl font-bold">
                 Rapid Refresh!
               </h1>
               
