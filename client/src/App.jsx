@@ -19,6 +19,7 @@ function App() {
         <Navbar />
         {/* added padding div to impact all pages */}
         <div className="pt-20 px-4 w-full flex flex-col lg:flex-row lg:justify-center lg:items-center lg:min-h-screen">
+          
       
           <Routes>
             {/* This creates the home path to separate the homepage from the others */}
@@ -31,8 +32,11 @@ function App() {
             {/* This provides a separate route for the dashboard */}
             <Route path="/dashboard" element={<Dashboard />} />
           </Routes>
+          
         </div>
+        
       </BrowserRouter>
+      
     </>
   );
 }

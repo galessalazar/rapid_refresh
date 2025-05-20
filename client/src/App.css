@@ -1,7 +1,5 @@
 #root {
   width: 100%;
-  display: flex;
-  justify-content: space-between;
 }
 body,
 #root {
@@ -13,7 +11,6 @@ body,
 
 .bruno-heading {
   font-family: "Bruno Ace", sans-serif;
-  /* font-size: 3.2em; */
   line-height: 1.1;
   @apply text-2xl sm:text-4xl;
   color: white;
@@ -30,7 +27,6 @@ nav.bg-gray-800 {
 
 @media (max-width: 768px) {
   body {
-    /* flex-direction: column; */
     color: #213547;
     background-color: #18d4d4;
   }

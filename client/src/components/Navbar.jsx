@@ -7,7 +7,7 @@ const Navbar = () => {
   return (
     //  fixed keeps it stuck to top of page
     <nav className="bg-gray-800 fixed top-0 w-full z-50">
-      <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+      <div className="ml-4">
         <div className=" flex  h-16 items-center justify-between">
           {/* title and icons section */}
           <div className="flex items-center space-x-2">
