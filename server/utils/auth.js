@@ -1,18 +1,25 @@
-// const jwt = require('jsonwebtoken');
-// const secretKey = 'abcde12345';
+const jwt = require('jsonwebtoken');
 
-// const token = jwt.sign({
-//   id: 1,
-//   username: 'GFG'
-// }, secretKey, { expiresIn: '1h' });
+const authMiddleware = (req, res, next) => {
+  // Get token from header
+  const token = req.header('Authorization')?.replace('Bearer ', '');
 
-// console.log(token);
+  // Check if no token
+  if (!token) {
+    return res.status(401).json({ message: 'No token, authorization denied' });
+  }
 
-// jwt.verify(token, 'abcde12345', (err, decoded) => {
-//     if (err) {
-//       console.log('Token is invalid');
-//     } else {
-//       console.log('Decoded Token:', decoded);
-//     }
-//   });
+  try {
+    // Verify token
+    const decoded = jwt.verify(token, process.env.SECRET_KEY);
+    
+    // Add user from payload
+    req.user = decoded;
+    next();
+  } catch (err) {
+    res.status(401).json({ message: 'Token is not valid' });
+  }
+};
+
+module.exports = { authMiddleware };
   

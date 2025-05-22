@@ -1,16 +1,18 @@
 // // const { Model, DataTypes } = require('sequelize');
 
-// const  sequelize  = require('../controllers/connection');
+const sequelize = require('../controllers/connection');
+const User = require('./User');
+const Contact = require('./Contact');
+const Service = require('./Service');
 
-// const Contact = require('./Contact');
-// const Service = require('./Service');
-
-// Contact.init(sequelize);
-// Service.init(sequelize);
-
+// Export models
+module.exports = {
+  sequelize,
+  User,
+  Contact,
+  Service
+};
 
 // sequelize.sync().then(() => {
 //     console.log('Database synced');
 // }).catch(err => console.error('Sync error:', err));
-
-// module.exports = { sequelize, Contact, Service };

@@ -1,9 +1,20 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 const Navbar = () => {
   // think of false as OFF
   const [isOpen, setIsOpen] = useState(false);
+  const [isAccountMenuOpen, setIsAccountMenuOpen] = useState(false);
+  const { isLoggedIn, isOwner, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    setIsAccountMenuOpen(false);
+    navigate('/login');
+  };
+
   return (
     //  fixed keeps it stuck to top of page
     <nav className="bg-gray-800 fixed top-0 w-full z-50">
@@ -68,12 +79,63 @@ const Navbar = () => {
             >
               Contact Us
             </Link>
-            <Link
-              to="/dashboard"
-              className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-            >
-              Admin
-            </Link>
+            
+            {/* Account Menu */}
+            <div className="relative">
+              <button
+                onClick={() => setIsAccountMenuOpen(!isAccountMenuOpen)}
+                className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white flex items-center"
+              >
+                Account {isLoggedIn ? '(Logged In)' : ''}
+                <span className="ml-1">▼</span>
+              </button>
+              
+              {isAccountMenuOpen && (
+                <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
+                  {isLoggedIn ? (
+                    <>
+                      <Link
+                        to="/dashboard"
+                        onClick={() => setIsAccountMenuOpen(false)}
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >
+                        Dashboard
+                      </Link>
+                      {isOwner && (
+                        <Link
+                          to="/register"
+                          onClick={() => setIsAccountMenuOpen(false)}
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        >
+                          Create User
+                        </Link>
+                      )}
+                      <Link
+                        to="/change-password"
+                        onClick={() => setIsAccountMenuOpen(false)}
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >
+                        Change Password
+                      </Link>
+                      <button
+                        onClick={handleLogout}
+                        className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >
+                        Logout
+                      </button>
+                    </>
+                  ) : (
+                    <Link
+                      to="/login"
+                      onClick={() => setIsAccountMenuOpen(false)}
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    >
+                      Login
+                    </Link>
+                  )}
+                </div>
+              )}
+            </div>
           </div>
         </div>
 
@@ -101,13 +163,50 @@ const Navbar = () => {
             >
               Contact Us
             </Link>
-            <Link
-              to="/dashboard"
-              onClick={() => setIsOpen(false)}
-              className="text-white bg-gray-700 rounded px-3 py-2"
-            >
-              Admin
-            </Link>
+            {isLoggedIn ? (
+              <>
+                <Link
+                  to="/dashboard"
+                  onClick={() => setIsOpen(false)}
+                  className="text-white bg-gray-700 rounded px-3 py-2"
+                >
+                  Dashboard
+                </Link>
+                {isOwner && (
+                  <Link
+                    to="/register"
+                    onClick={() => setIsOpen(false)}
+                    className="text-white bg-gray-700 rounded px-3 py-2"
+                  >
+                    Create User
+                  </Link>
+                )}
+                <Link
+                  to="/change-password"
+                  onClick={() => setIsOpen(false)}
+                  className="text-white bg-gray-700 rounded px-3 py-2"
+                >
+                  Change Password
+                </Link>
+                <button
+                  onClick={() => {
+                    handleLogout();
+                    setIsOpen(false);
+                  }}
+                  className="text-white bg-gray-700 rounded px-3 py-2 text-left"
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              <Link
+                to="/login"
+                onClick={() => setIsOpen(false)}
+                className="text-white bg-gray-700 rounded px-3 py-2"
+              >
+                Login
+              </Link>
+            )}
           </div>
         )}
       </div>
