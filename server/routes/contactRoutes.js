@@ -8,24 +8,30 @@ const sequelize = require("../controllers/connection");
 const { Contact } = require("../models");
 console.log(Contact)
 
-router.post("/contacts", async (req, res) => {
-  try {
-    //    const { contactName, contactEmail, contactMessage } = req.body;
-    const newContact = await Contact.create(req.body);
+const { authenticateToken, isOwner } = require('../middleware/authMiddleware');
 
-    res.status(201).json(newContact);
+// Handle contact form submission
+router.post('/', authenticateToken, isOwner, async (req, res) => {
+  try {
+    const { name, email, message } = req.body;
+
+    // Validate required fields
+    if (!name || !email || !message) {
+      return res.status(400).json({ message: 'All fields are required' });
+    }
+
+    // Create contact submission in database
+    await Contact.create({
+      name,
+      email,
+      message
+    });
+
+    res.status(200).json({ message: 'Message sent successfully' });
   } catch (error) {
-    console.error("Error submitting contact form", error);
-    res.status(500).json({ message: "Internal Server Error" });
+    console.error('Error in contact submission:', error);
+    res.status(500).json({ message: 'Failed to send message' });
   }
 });
-//     );
-
-//         res.status(201).json({ message: 'Contact submitted successfully!', contact: newContact })
-//     } catch (error) {
-//         console.error('Error saving contact data:', error);
-//         res.status(500).json({ message: 'Failed to submit contact form'});
-//     }
-// });
 
 module.exports = router;

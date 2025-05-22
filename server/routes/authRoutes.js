@@ -26,8 +26,8 @@ router.post("/login", async (req, res) => {
 
     // Generate JWT token
     const token = jwt.sign(
-      { id: user.UserId, email: user.email },
-      process.env.SECRET_KEY,
+      { id: user.UserId, email: user.email, isOwner: user.isOwner },
+      process.env.JWT_SECRET,
       { expiresIn: "1h" }
     );
 
@@ -62,8 +62,8 @@ router.post("/register", authenticateToken, isOwner, async (req, res) => {
 
     // Generate JWT token
     const token = jwt.sign(
-      { id: user.UserId, email: user.email },
-      process.env.SECRET_KEY,
+      { id: user.UserId, email: user.email, isOwner: user.isOwner },
+      process.env.JWT_SECRET,
       { expiresIn: "1h" }
     );
 
@@ -104,8 +104,8 @@ router.post("/create-owner", async (req, res) => {
 
     // Generate JWT token
     const token = jwt.sign(
-      { id: user.UserId, email: user.email },
-      process.env.SECRET_KEY,
+      { id: user.UserId, email: user.email, isOwner: user.isOwner },
+      process.env.JWT_SECRET,
       { expiresIn: "1h" }
     );
 
