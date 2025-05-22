@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken');
-const { User } = require('../models');
 
 // Middleware to verify JWT token
 const authenticateToken = async (req, res, next) => {
@@ -12,6 +11,9 @@ const authenticateToken = async (req, res, next) => {
     }
 
     const decoded = jwt.verify(token, process.env.SECRET_KEY);
+    
+    // Import User model here to avoid circular dependency
+    const { User } = require('../models');
     const user = await User.findByPk(decoded.id);
 
     if (!user) {
