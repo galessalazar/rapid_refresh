@@ -5,12 +5,17 @@ const User = require('./User');
 const Contact = require('./Contact');
 const Service = require('./Service');
 
-// Export models
-module.exports = {
-  sequelize,
+// Initialize models
+const models = {
   User,
   Contact,
   Service
+};
+
+// Export models and sequelize instance
+module.exports = {
+  sequelize,
+  ...models
 };
 
 // sequelize.sync().then(() => {

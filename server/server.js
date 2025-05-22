@@ -3,9 +3,7 @@ require("dotenv").config();
 const path = require("path");
 const { authMiddleware } = require('./utils/auth');
 const authRoutes = require('./routes/authRoutes');
-
 const cors = require("cors");
-// /must place prior to any routes or it wont work
 
 const app = express();
 // middleware used with forms/ submits, parses data coming in through HTTP requests
@@ -49,7 +47,7 @@ app.use(express.static(path.join(__dirname, "../client/dist")));
 
 const sequelize = require("./controllers/connection");
 const serviceRoutes = require("./routes/serviceRoutes");
-const contactRoutes = require("./routes/contactRoutes");
+const apiRoutes = require("./routes/api");
 
 const PORT = process.env.PORT || 3001;
 
@@ -66,8 +64,7 @@ if (process.env.NODE_ENV === "production") {
 // tells Express, any request to /api/services should go to serviceRoutes
 app.use('/api', authRoutes);
 app.use("/api/services", serviceRoutes);
-// still need to setup all configurations
-app.use("/api/contact", contactRoutes);
+app.use("/api", apiRoutes);
 
 // this needs to remain outside of the below if statement to always include a default route
 app.get("/", (req, res) => {
@@ -83,10 +80,8 @@ sequelize
   .authenticate()
   .then(() => {
     console.log("💡 Connected to DB:", sequelize.getDatabaseName());
-
-    // Only sync if connected successfully
-    return sequelize.sync({ force: true });
-    // REMOVE FORCE TRUE ENTIRELY AFTER PRODUCTION, will drop tables everytime server restarts
+    // Only sync if connected successfully - using force: false for production
+    return sequelize.sync({ force: false });
   })
   .then(() => {
     app.listen(PORT, () =>

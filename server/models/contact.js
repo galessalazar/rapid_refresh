@@ -5,28 +5,39 @@ class Contact extends Model {}
 
 Contact.init(
     {
-        contactName: {
-            type: DataTypes.STRING,
-            allowNull: false
+        id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            primaryKey: true,
+            autoIncrement: true,
         },
-        contactEmail: {
+        name: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
         },
-        contactMessage: {
+        email: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                isEmail: true,
+            },
+        },
+        message: {
             type: DataTypes.TEXT,
-            allowNull: false
+            allowNull: false,
         },
+        createdAt: {
+            type: DataTypes.DATE,
+            defaultValue: DataTypes.NOW,
+        }
     },
-
-
-{
-    sequelize: sequelize,
-    timestamps: false,
-    freezeTableName: true,
-    underscored: true,
-    modelName: 'contact',
-}
+    {
+        sequelize: sequelize,
+        timestamps: true,
+        freezeTableName: true,
+        underscored: true,
+        modelName: 'contact',
+    }
 )
 
 module.exports = Contact;

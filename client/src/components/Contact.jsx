@@ -1,82 +1,138 @@
-import React, { useState } from "react";
-import axios from 'axios';
-import { ToastProvider, ToastViewport, Toast, ToastTitle, ToastDescription, ToastClose, ToastAction, } from './Test';
-
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "../axiosConfig";
 
 const Contact = () => {
-    const [formData, setFormData] = useState ({
-        name: '',
-        email: '',
-        message: '',
-    })
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: ""
+  });
+  const [status, setStatus] = useState({ type: "", message: "" });
+  const navigate = useNavigate();
 
-    const handleChange = (e) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value,
-        })
+  useEffect(() => {
+    // Check if user is logged in and is owner
+    const token = localStorage.getItem('token');
+    if (!token) {
+      navigate('/login');
+      return;
     }
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        try {
-
-            // sends a POST request to backend at /api/contacts
-
-            await axios.post('/api/contacts', formData);
-           
-            // clear out the form after hitting submit
-
-            setFormData({
-            name: '',
-            email: '',
-            message:'',
-        })
-       
-        alert('Thank you for contacting us!');
- } catch (error) {
-    console.error('Error submitting the form:', error);
-    alert('There was an error submitting your message. Please try again.')
- }
-       
+    // Verify owner status
+    const checkOwnerStatus = async () => {
+      try {
+        const response = await axios.get('/api/verify-owner', {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        if (!response.data.isOwner) {
+          navigate('/dashboard');
+        }
+      } catch (err) {
+        navigate('/login');
+      }
     };
 
-    return (
-        <div>
+    checkOwnerStatus();
+  }, [navigate]);
 
-            <h1 className="bruno-heading">Contact Us</h1>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="name">Name:</label>
-                <input
-                type="text"
-                id="name"
-                name='name'
-                value={formData.name}
-                onChange={handleChange}
-                required
-                />
-                <label htmlFor="email">Email:</label>
-                <input
-                type="text"
-                id="email"
-                name='email'
-                value={formData.email}
-                onChange={handleChange}
-                required
-                />
-                <label htmlFor="message">Message:</label>
-                <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                required
-                />
-                <button type='submit'>Submit</button>
-            </form>
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus({ type: "loading", message: "Sending message..." });
+
+    try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        navigate('/login');
+        return;
+      }
+
+      await axios.post("/api/contact", formData, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      
+      setStatus({ type: "success", message: "Message sent successfully!" });
+      setFormData({ name: "", email: "", message: "" });
+    } catch (error) {
+      if (error.response?.status === 401) {
+        navigate('/login');
+      } else if (error.response?.status === 403) {
+        setStatus({ 
+          type: "error", 
+          message: "Only owners can submit contact forms" 
+        });
+      } else {
+        setStatus({ 
+          type: "error", 
+          message: error.response?.data?.message || "Failed to send message. Please try again." 
+        });
+      }
+    }
+  };
+
+  return (
+    <div className="flex flex-col items-center justify-center min-h-screen p-4">
+      <form onSubmit={handleSubmit} className="w-full max-w-md p-6 bg-white rounded-lg shadow-md">
+        <h2 className="text-2xl font-bold mb-6 text-center">Contact Us</h2>
+        
+        {status.message && (
+          <div className={`mb-4 p-3 rounded ${
+            status.type === "success" ? "bg-green-100 text-green-700" :
+            status.type === "error" ? "bg-red-100 text-red-700" :
+            "bg-blue-100 text-blue-700"
+          }`}>
+            {status.message}
+          </div>
+        )}
+
+        <div className="space-y-4">
+          <input
+            type="text"
+            name="name"
+            placeholder="Your Name"
+            value={formData.name}
+            onChange={handleChange}
+            className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required
+          />
+
+          <input
+            type="email"
+            name="email"
+            placeholder="Your Email"
+            value={formData.email}
+            onChange={handleChange}
+            className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required
+          />
+
+          <textarea
+            name="message"
+            placeholder="Your Message"
+            value={formData.message}
+            onChange={handleChange}
+            className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500 h-32 resize-none"
+            required
+          />
+
+          <button
+            type="submit"
+            disabled={status.type === "loading"}
+            className="w-full py-2 px-4 bg-[#334155] text-white rounded hover:bg-[#64748b] focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50"
+          >
+            {status.type === "loading" ? "Sending..." : "Send Message"}
+          </button>
         </div>
-    )
-}
+      </form>
+    </div>
+  );
+};
 
 export default Contact;
