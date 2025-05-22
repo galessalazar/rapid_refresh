@@ -12,15 +12,19 @@ Service.init(
     },
     serviceName: {
       type: DataTypes.STRING,
+      allowNull: false,
     },
     serviceDescription: {
       type: DataTypes.TEXT,
+      allowNull: false,
     },
     costOfService: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.DECIMAL(10, 2),
+      allowNull: false,
     },
     estimatedTime: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.DECIMAL(4, 1),
+      allowNull: false,
     },
   },
   {

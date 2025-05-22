@@ -80,8 +80,11 @@ sequelize
   .authenticate()
   .then(() => {
     console.log("💡 Connected to DB:", sequelize.getDatabaseName());
-    // Only sync if connected successfully - using force: false for production
-    return sequelize.sync({ force: false });
+    // Force sync in development mode
+    const syncOptions = process.env.NODE_ENV === 'production' 
+      ? { force: false }
+      : { force: true }; // This will recreate tables in development
+    return sequelize.sync(syncOptions);
   })
   .then(() => {
     app.listen(PORT, () =>

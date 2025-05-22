@@ -7,7 +7,6 @@ import {
   ToastTitle,
   ToastDescription,
   ToastClose,
-  ToastAction,
 } from "./Test";
 
 const ServiceForm = ({ onAddService }) => {
@@ -43,8 +42,8 @@ const ServiceForm = ({ onAddService }) => {
 
         setToast({
             open: true,
-            title: "Service Added!",
-            description: "Your new service has been added successfully.",
+            title: "Success!",
+            description: "Service added successfully.",
         });
         // sets it to auto hide after 3 secs
         setTimeout(() => {
@@ -69,55 +68,79 @@ const ServiceForm = ({ onAddService }) => {
 
   return (
     <ToastProvider>
-      
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={newService.serviceName}
-          onChange={(e) =>
-            setNewService({ ...newService, serviceName: e.target.value })
-          }
-          placeholder="Service Name"
-          required
-        />
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div>
+          <label htmlFor="serviceName" className="block text-sm font-medium text-gray-700">
+            Service Name
+          </label>
+          <input
+            id="serviceName"
+            type="text"
+            value={newService.serviceName}
+            onChange={(e) => setNewService({ ...newService, serviceName: e.target.value })}
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            placeholder="e.g., Deep Cleaning"
+            required
+          />
+        </div>
 
-        <input
-          type="text"
-          value={newService.serviceDescription}
-          onChange={(e) =>
-            setNewService({ ...newService, serviceDescription: e.target.value })
-          }
-          placeholder="Description"
-          required
-        />
+        <div>
+          <label htmlFor="serviceDescription" className="block text-sm font-medium text-gray-700">
+            Description
+          </label>
+          <textarea
+            id="serviceDescription"
+            value={newService.serviceDescription}
+            onChange={(e) => setNewService({ ...newService, serviceDescription: e.target.value })}
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            placeholder="Describe the service in detail"
+            rows="3"
+            required
+          />
+        </div>
 
-        <input
-          type="number"
-          value={newService.costOfService}
-          onChange={(e) =>
-            setNewService({ ...newService, costOfService: e.target.value })
-          }
-          placeholder="Cost"
-          // wont leave input empty
-          required
-          // prevents negative values
-          min="0"
-          // allows for decimals/ not necessary
-          // step='0.01'
-        />
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <label htmlFor="costOfService" className="block text-sm font-medium text-gray-700">
+              Cost ($)
+            </label>
+            <input
+              id="costOfService"
+              type="number"
+              value={newService.costOfService}
+              onChange={(e) => setNewService({ ...newService, costOfService: e.target.value })}
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              placeholder="0.00"
+              required
+              min="0"
+              step="0.01"
+            />
+          </div>
 
-        <input
-          type="number"
-          value={newService.estimatedTime}
-          onChange={(e) =>
-            setNewService({ ...newService, estimatedTime: e.target.value })
-          }
-          placeholder="Time (in hours)"
-          required
-          min="0"
-        />
+          <div>
+            <label htmlFor="estimatedTime" className="block text-sm font-medium text-gray-700">
+              Time (hours)
+            </label>
+            <input
+              id="estimatedTime"
+              type="number"
+              value={newService.estimatedTime}
+              onChange={(e) => setNewService({ ...newService, estimatedTime: e.target.value })}
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              placeholder="0"
+              required
+              min="0"
+              step="0.5"
+            />
+          </div>
+        </div>
 
-        <button type="submit">Add Service</button>
+        <button
+          type="submit"
+          className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+        >
+          Add Service
+        </button>
       </form>
       {toast.open && (
         <Toast>
