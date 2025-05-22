@@ -10,7 +10,7 @@ const authenticateToken = async (req, res, next) => {
       return res.status(401).json({ message: 'No token provided' });
     }
 
-    const decoded = jwt.verify(token, process.env.SECRET_KEY);
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
     
     // Import User model here to avoid circular dependency
     const { User } = require('../models');
@@ -23,6 +23,7 @@ const authenticateToken = async (req, res, next) => {
     req.user = user;
     next();
   } catch (error) {
+    console.error('Auth error:', error);
     return res.status(403).json({ message: 'Invalid token' });
   }
 };

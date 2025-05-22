@@ -10,6 +10,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const { login } = useAuth();
 
@@ -17,6 +18,7 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setError("");
+    setIsLoading(true);
     
     try {
       const response = await axios.post('/api/login', {
@@ -24,13 +26,23 @@ const Login = () => {
         password
       });
       
-      // Use the login function from AuthContext
-      login(response.data.token, response.data.isOwner);
-      
-      // Redirect to dashboard
-      navigate('/dashboard');
+      if (response.data.token) {
+        // Store token in localStorage
+        localStorage.setItem('token', response.data.token);
+        
+        // Use the login function from AuthContext
+        login(response.data.token, response.data.isOwner);
+        
+        // Redirect to dashboard
+        navigate('/dashboard');
+      } else {
+        setError('Invalid response from server');
+      }
     } catch (err) {
+      console.error('Login error:', err);
       setError(err.response?.data?.message || 'Login failed. Please try again.');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -53,6 +65,7 @@ const Login = () => {
             onChange={(e) => setEmail(e.target.value)}
             className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
+            disabled={isLoading}
           />
 
           <input
@@ -62,13 +75,15 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
             className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
+            disabled={isLoading}
           />
 
           <button
             type="submit"
-            className="w-full py-2 px-4 bg-[#334155] text-white rounded hover:bg-[#64748b] focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full py-2 px-4 bg-[#334155] text-white rounded hover:bg-[#64748b] focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50"
+            disabled={isLoading}
           >
-            Login
+            {isLoading ? 'Logging in...' : 'Login'}
           </button>
 
           <div className="text-center mt-4">

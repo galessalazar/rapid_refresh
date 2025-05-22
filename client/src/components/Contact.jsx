@@ -9,14 +9,14 @@ const Contact = () => {
     message: ""
   });
   const [status, setStatus] = useState({ type: "", message: "" });
+  const [isOwner, setIsOwner] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Check if user is logged in and is owner
+    // Check if user is logged in
     const token = localStorage.getItem('token');
     if (!token) {
-      navigate('/login');
-      return;
+      return; // Don't redirect, just show the form
     }
 
     // Verify owner status
@@ -25,16 +25,14 @@ const Contact = () => {
         const response = await axios.get('/api/verify-owner', {
           headers: { Authorization: `Bearer ${token}` }
         });
-        if (!response.data.isOwner) {
-          navigate('/dashboard');
-        }
+        setIsOwner(response.data.isOwner);
       } catch (err) {
-        navigate('/login');
+        console.error('Error checking owner status:', err);
       }
     };
 
     checkOwnerStatus();
-  }, [navigate]);
+  }, []);
 
   const handleChange = (e) => {
     setFormData({
@@ -50,7 +48,10 @@ const Contact = () => {
     try {
       const token = localStorage.getItem('token');
       if (!token) {
-        navigate('/login');
+        setStatus({ 
+          type: "error", 
+          message: "Please log in to submit the contact form" 
+        });
         return;
       }
 
@@ -62,7 +63,10 @@ const Contact = () => {
       setFormData({ name: "", email: "", message: "" });
     } catch (error) {
       if (error.response?.status === 401) {
-        navigate('/login');
+        setStatus({ 
+          type: "error", 
+          message: "Please log in to submit the contact form" 
+        });
       } else if (error.response?.status === 403) {
         setStatus({ 
           type: "error", 
