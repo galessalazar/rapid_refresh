@@ -1,33 +1,48 @@
-const  Service  = require('./models/Service')
-const { db } = require('./controllers/connection')
+const Service = require("./models/Service");
+const { db } = require("./controllers/connection");
 
 async function seedService() {
-    try{
-        await Service.bulkCreate([
-            {
-                serviceName: 'Fresh Start Clean',
-                serviceDescription: 'Sanitizing of areas to include countertops, restrooms, and bedrooms.',
-                costOfService: 150, 
-                estimatedTime: 3 
-            },
-            {
-                serviceName: 'Deep Refresh',
-                serviceDescription: 'Fresh Start Clean plus kitchen detail to include dishes, refrigerator and microwave.',
-                costOfService: 250, 
-                estimatedTime: 4 
-            },
-            {
-                serviceName: 'Ultimate Clean',
-                serviceDescription: 'Deep Refresh plus laundry detail. Full laundry service includes wash/dry/fold/hang. Customer preferences to be discussed prior to start and all cleaning supplies to be provided by me, with additional charge for laundry cleaning supplies. Optional: you may provide your own laundry cleaning supplies to waive additional fees.',
-                costOfService: 350, 
-                estimatedTime: 5 
-            }
-        ])
+  try {
+    await Service.bulkCreate([
+      {
+        serviceName: "Fresh Start Clean",
+        serviceDescription:
+          "Sanitizing focused on key areas including countertops, restrooms, and bedrooms.",
+        costOfService: 180,
+        estimatedTime: 3,
+      },
+      {
+        serviceName: "Deep Refresh",
+        serviceDescription:
+          "Includes everything in Fresh Start Clean plus a detailed kitchen cleaning: dishes, refrigerator interior, microwave, and countertops.",
+        costOfService: 250,
+        estimatedTime: 4,
+      },
+      {
+        serviceName: "Ultimate Clean",
+        serviceDescription: `Includes
+                
+              - Fresh Start Clean (countertops, restrooms, bedrooms)
 
-        console.log('Seeded!')
-    } catch (error) {
-        console.error('Error seeding:', error);
-    }
+              - Kitchen detail (dishes, refrigerator, microwave)
+
+              - Laundry detail: wash, dry, fold, and hang
+
+              - Customer preferences discussed before starting
+
+              - All cleaning supplies provided by me
+
+              - Additional charge for laundry supplies unless you provide your own, which waives that fee`,
+
+        costOfService: 350,
+        estimatedTime: 6,
+      },
+    ]);
+
+    console.log("Seeded!");
+  } catch (error) {
+    console.error("Error seeding:", error);
+  }
 }
 
 seedService();
