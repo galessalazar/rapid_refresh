@@ -83,7 +83,7 @@ sequelize
     // Force sync in development mode
     const syncOptions = process.env.NODE_ENV === 'production' 
       ? { force: false }
-      : { force: true }; // This will recreate tables in development
+      : { force: false }; // This will recreate tables in development, updated to false, change to true if you want db to drop and update
     return sequelize.sync(syncOptions);
   })
   .then(() => {
