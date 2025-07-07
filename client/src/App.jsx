@@ -9,9 +9,10 @@ import AboutUs from "./components/AboutUs";
 import Contact from "./components/Contact";
 import PublicServices from "./components/PublicPage";
 import Hero from "./components/Hero";
-import Login from "./components/Login";
+// import Login from "./components/Login";
 import Register from "./components/Register";
 import ChangePassword from "./components/ChangePassword";
+import  SupabaseLogin  from "./components/SupabaseLogin";
 
 // Protected Route component
 const ProtectedRoute = ({ children }) => {
@@ -41,7 +42,7 @@ function App() {
             <Route path="/about" element={<AboutUs />} />
             <Route path="/services" element={<PublicServices />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/login" element={<SupabaseLogin />} />
             <Route path="/register" element={<Register />} />
             <Route 
               path="/change-password" 
