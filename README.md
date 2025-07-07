@@ -21,15 +21,9 @@ git clone https://github.com/galessalazar/rapid_refresh.git
 
  Authentication: JWT(JSON Web Tokens) for secure user logins
 
- Hosting: Frontend found on Vercel and Backend found on Heroku
+ Hosting: Render and Supabase
 ```
 
-## Contributing
-
-Pull requests are welcome. For major changes, please open an issue first
-to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
 
 ## License
 

@@ -11,7 +11,15 @@ const db_key = process.env.DB_KEY;
 const supabase = createClient(process.env.SUPABASE_URL, db_key);
 
 
-console.log('Connecting to DB at:', new URL(process.env.DATABASE_URL).host);
+console.log('Connecting to DB at:', new URL(process.env.DB_URL).host);
+
+
+let { data, error } = await supabase.auth.signUp({
+  email: 'someone@email.com',
+  password: 'FiqmaNXmUWiEDrxbYTWO'
+})
+
+
 
 
 export default { sql, supabase };
