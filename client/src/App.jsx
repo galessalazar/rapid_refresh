@@ -13,6 +13,8 @@ import Hero from "./components/Hero";
 import Register from "./components/Register";
 import ChangePassword from "./components/ChangePassword";
 import  SupabaseLogin  from "./components/SupabaseLogin";
+import "@fontsource/material-symbols-outlined";
+
 
 // Protected Route component
 const ProtectedRoute = ({ children }) => {

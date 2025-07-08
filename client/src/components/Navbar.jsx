@@ -6,8 +6,10 @@ import { createClient } from "@supabase/supabase-js";
 import { Auth } from "@supabase/auth-ui-react";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
 
-const Navbar = () => {
 
+const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isAccountMenuOpen, setIsAccountMenuOpen] = useState(false);
   const supabase = createClient(
     import.meta.env.VITE_SUPABASE_URL,
     import.meta.env.VITE_SUPABASE_ANON_KEY
@@ -49,13 +51,13 @@ const Navbar = () => {
             </Link>
           </div>
 
-          {/* Hamburger Menu */}
-          <button
+          {/* Hamburger Menu */ }
+           <button
             className="sm:hidden text-white text-3xl focus:outline-none"
             onClick={() => setIsOpen(!isOpen)}
           >
             ☰
-          </button>
+          </button> 
           {/* link buttons */}
           <div className="hidden sm:flex space-x-4">
             <Link
@@ -80,16 +82,17 @@ const Navbar = () => {
             </Link>
 
             {/* Account Menu */}
-            <div className="relative">
-              <button
-                onClick={() => setIsAccountMenuOpen(!isAccountMenuOpen)}
-                className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white flex items-center"
-              >
-                <span className="ml-1">▼</span>
+            <div
+              className="relative inline-block"
+              onMouseEnter={() => setIsAccountMenuOpen(true)}
+              onMouseLeave={() => setIsAccountMenuOpen(false)}
+            >
+              <button className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white flex items-center">
+                <span className="ml-1">Account ▼</span>
               </button>
 
-              {/* {isAccountMenuOpen && ( */}
-                <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
+              {isAccountMenuOpen && (
+                <div className="absolute right-0 top-full w-48 bg-white rounded-md shadow-lg py-1 z-50">
                   <>
                     <Link
                       to="/dashboard"
@@ -128,13 +131,13 @@ const Navbar = () => {
                     Login
                   </Link>
                 </div>
-              {/* )} */}
+              )}
             </div>
           </div>
         </div>
 
         {/* Mobile Menu */}
-        {/* {isOpen && ( */}
+        {isOpen && (
           <div className="sm:hidden flex flex-col space-y-2 mt-2 px-2 pb-4">
             <Link
               to="/about"
@@ -158,51 +161,51 @@ const Navbar = () => {
               Contact Us
             </Link>
             {/* {isLoggedIn ? ( */}
-              <>
-                <Link
-                  to="/dashboard"
-                  onClick={() => setIsOpen(false)}
-                  className="text-white bg-gray-700 rounded px-3 py-2"
-                >
-                  Dashboard
-                </Link>
-                {/* {isOwner && ( */}
-                  <Link
-                    to="/register"
-                    onClick={() => setIsOpen(false)}
-                    className="text-white bg-gray-700 rounded px-3 py-2"
-                  >
-                    Create User
-                  </Link>
-                {/* )} */}
-                <Link
-                  to="/change-password"
-                  onClick={() => setIsOpen(false)}
-                  className="text-white bg-gray-700 rounded px-3 py-2"
-                >
-                  Change Password
-                </Link>
-                <button
-                  onClick={() => {
-                    signOut();
-                    setIsOpen(false);
-                  }}
-                  className="text-white bg-gray-700 rounded px-3 py-2 text-left"
-                >
-                  Logout
-                </button>
-              </>
-            {/* ) : ( */}
+            <>
               <Link
-                to="/login"
+                to="/dashboard"
                 onClick={() => setIsOpen(false)}
                 className="text-white bg-gray-700 rounded px-3 py-2"
               >
-                Login
+                Dashboard
               </Link>
+              {/* {isOwner && ( */}
+              <Link
+                to="/register"
+                onClick={() => setIsOpen(false)}
+                className="text-white bg-gray-700 rounded px-3 py-2"
+              >
+                Create User
+              </Link>
+              {/* )} */}
+              <Link
+                to="/change-password"
+                onClick={() => setIsOpen(false)}
+                className="text-white bg-gray-700 rounded px-3 py-2"
+              >
+                Change Password
+              </Link>
+              <button
+                onClick={() => {
+                  signOut();
+                  setIsOpen(false);
+                }}
+                className="text-white bg-gray-700 rounded px-3 py-2 text-left"
+              >
+                Logout
+              </button>
+            </>
+            {/* ) : ( */}
+            <Link
+              to="/login"
+              onClick={() => setIsOpen(false)}
+              className="text-white bg-gray-700 rounded px-3 py-2"
+            >
+              Login
+            </Link>
             {/* )} */}
           </div>
-        {/* )} */}
+        )}
       </div>
     </nav>
   );
