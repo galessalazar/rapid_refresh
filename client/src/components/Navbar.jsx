@@ -1,12 +1,18 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
+// import { useAuth } from "../context/AuthContext";
+
+import "../index.css";
+import { createClient } from "@supabase/supabase-js";
+import { Auth } from "@supabase/auth-ui-react";
+import { ThemeSupa } from "@supabase/auth-ui-shared";
+
 
 const Navbar = () => {
   // think of false as OFF
   const [isOpen, setIsOpen] = useState(false);
   const [isAccountMenuOpen, setIsAccountMenuOpen] = useState(false);
-  const { isLoggedIn, isOwner, logout } = useAuth();
+  // const { isLoggedIn, isOwner, logout } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -14,6 +20,14 @@ const Navbar = () => {
     setIsAccountMenuOpen(false);
     navigate('/login');
   };
+const supabase = createClient(
+  import.meta.env.VITE_SUPABASE_URL,
+  import.meta.env.VITE_SUPABASE_ANON_KEY
+);
+   async function signOut() {
+    const { error } = await supabase.auth.signOut();
+  }
+// console.log('Is logged in:', isLoggedIn);
 
   return (
     //  fixed keeps it stuck to top of page
@@ -86,13 +100,13 @@ const Navbar = () => {
                 onClick={() => setIsAccountMenuOpen(!isAccountMenuOpen)}
                 className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white flex items-center"
               >
-                Account {isLoggedIn ? '(Logged In)' : ''}
+                {/* Account {isLoggedIn ? '(Logged In)' : ''} */}
                 <span className="ml-1">▼</span>
               </button>
               
               {isAccountMenuOpen && (
                 <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
-                  {isLoggedIn ? (
+                  {/* {isLoggedIn ? ( */}
                     <>
                       <Link
                         to="/dashboard"
@@ -101,7 +115,7 @@ const Navbar = () => {
                       >
                         Dashboard
                       </Link>
-                      {isOwner && (
+                      {/* {isOwner && ( */}
                         <Link
                           to="/register"
                           onClick={() => setIsAccountMenuOpen(false)}
@@ -109,7 +123,7 @@ const Navbar = () => {
                         >
                           Create User
                         </Link>
-                      )}
+                      {/* )} */}
                       <Link
                         to="/change-password"
                         onClick={() => setIsAccountMenuOpen(false)}
@@ -117,8 +131,12 @@ const Navbar = () => {
                       >
                         Change Password
                       </Link>
+
+                      
                       <button
-                        onClick={handleLogout}
+                      
+                        onClick={signOut}
+                        
                         className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                       >
                         Logout
