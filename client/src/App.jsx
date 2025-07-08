@@ -2,7 +2,7 @@ import { useState } from "react";
 // need the routes and route to separate the paths below
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import { AuthProvider } from "./context/AuthContext";
+// import { AuthProvider } from "./context/AuthContext";
 
 import Dashboard from "./components/Dashboard";
 import AboutUs from "./components/AboutUs";
@@ -13,6 +13,8 @@ import Hero from "./components/Hero";
 import Register from "./components/Register";
 import ChangePassword from "./components/ChangePassword";
 import  SupabaseLogin  from "./components/SupabaseLogin";
+import "@fontsource/material-symbols-outlined";
+
 
 // Protected Route component
 const ProtectedRoute = ({ children }) => {
@@ -26,10 +28,10 @@ const ProtectedRoute = ({ children }) => {
 };
 
 function App() {
-  const [count, setCount] = useState(0);
+  // const [count, setCount] = useState(0);
 
   return (
-    <AuthProvider>
+    // <AuthProvider>
       <BrowserRouter>
         <Navbar />
         {/* added padding div to impact all pages */}
@@ -67,7 +69,7 @@ function App() {
         </div>
         
       </BrowserRouter>
-    </AuthProvider>
+    // </AuthProvider>
   );
 }
 
