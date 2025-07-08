@@ -1,33 +1,20 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-// import { useAuth } from "../context/AuthContext";
 
 import "../index.css";
 import { createClient } from "@supabase/supabase-js";
 import { Auth } from "@supabase/auth-ui-react";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
 
-
 const Navbar = () => {
-  // think of false as OFF
-  const [isOpen, setIsOpen] = useState(false);
-  const [isAccountMenuOpen, setIsAccountMenuOpen] = useState(false);
-  // const { isLoggedIn, isOwner, logout } = useAuth();
-  const navigate = useNavigate();
 
-  const handleLogout = () => {
-    logout();
-    setIsAccountMenuOpen(false);
-    navigate('/login');
-  };
-const supabase = createClient(
-  import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_ANON_KEY
-);
-   async function signOut() {
+  const supabase = createClient(
+    import.meta.env.VITE_SUPABASE_URL,
+    import.meta.env.VITE_SUPABASE_ANON_KEY
+  );
+  async function signOut() {
     const { error } = await supabase.auth.signOut();
   }
-// console.log('Is logged in:', isLoggedIn);
 
   return (
     //  fixed keeps it stuck to top of page
@@ -44,9 +31,7 @@ const supabase = createClient(
               <h1 className="bruno-heading text-2xl sm:text-4xl font-bold">
                 Rapid Refresh!
               </h1>
-              
-              
-                
+
               <div className="hidden sm:flex space-x-3 items-center ml-4">
                 <span className="material-symbols-outlined text-2xl leading-none">
                   dry_cleaning
@@ -93,72 +78,63 @@ const supabase = createClient(
             >
               Contact Us
             </Link>
-            
+
             {/* Account Menu */}
             <div className="relative">
               <button
                 onClick={() => setIsAccountMenuOpen(!isAccountMenuOpen)}
                 className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white flex items-center"
               >
-                {/* Account {isLoggedIn ? '(Logged In)' : ''} */}
                 <span className="ml-1">▼</span>
               </button>
-              
-              {isAccountMenuOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
-                  {/* {isLoggedIn ? ( */}
-                    <>
-                      <Link
-                        to="/dashboard"
-                        onClick={() => setIsAccountMenuOpen(false)}
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                      >
-                        Dashboard
-                      </Link>
-                      {/* {isOwner && ( */}
-                        <Link
-                          to="/register"
-                          onClick={() => setIsAccountMenuOpen(false)}
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                        >
-                          Create User
-                        </Link>
-                      {/* )} */}
-                      <Link
-                        to="/change-password"
-                        onClick={() => setIsAccountMenuOpen(false)}
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                      >
-                        Change Password
-                      </Link>
 
-                      
-                      <button
-                      
-                        onClick={signOut}
-                        
-                        className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                      >
-                        Logout
-                      </button>
-                    </>
-                  ) : (
+              {/* {isAccountMenuOpen && ( */}
+                <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
+                  <>
                     <Link
-                      to="/login"
+                      to="/dashboard"
                       onClick={() => setIsAccountMenuOpen(false)}
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                     >
-                      Login
+                      Dashboard
                     </Link>
-                  )}
+                    <Link
+                      to="/register"
+                      onClick={() => setIsAccountMenuOpen(false)}
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    >
+                      Create User
+                    </Link>
+                    <Link
+                      to="/change-password"
+                      onClick={() => setIsAccountMenuOpen(false)}
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    >
+                      Change Password
+                    </Link>
+
+                    <button
+                      onClick={signOut}
+                      className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    >
+                      Logout
+                    </button>
+                  </>
+                  <Link
+                    to="/login"
+                    onClick={() => setIsAccountMenuOpen(false)}
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  >
+                    Login
+                  </Link>
                 </div>
-              )}
+              {/* )} */}
             </div>
           </div>
         </div>
 
         {/* Mobile Menu */}
-        {isOpen && (
+        {/* {isOpen && ( */}
           <div className="sm:hidden flex flex-col space-y-2 mt-2 px-2 pb-4">
             <Link
               to="/about"
@@ -181,7 +157,7 @@ const supabase = createClient(
             >
               Contact Us
             </Link>
-            {isLoggedIn ? (
+            {/* {isLoggedIn ? ( */}
               <>
                 <Link
                   to="/dashboard"
@@ -190,7 +166,7 @@ const supabase = createClient(
                 >
                   Dashboard
                 </Link>
-                {isOwner && (
+                {/* {isOwner && ( */}
                   <Link
                     to="/register"
                     onClick={() => setIsOpen(false)}
@@ -198,7 +174,7 @@ const supabase = createClient(
                   >
                     Create User
                   </Link>
-                )}
+                {/* )} */}
                 <Link
                   to="/change-password"
                   onClick={() => setIsOpen(false)}
@@ -208,7 +184,7 @@ const supabase = createClient(
                 </Link>
                 <button
                   onClick={() => {
-                    handleLogout();
+                    signOut();
                     setIsOpen(false);
                   }}
                   className="text-white bg-gray-700 rounded px-3 py-2 text-left"
@@ -216,7 +192,7 @@ const supabase = createClient(
                   Logout
                 </button>
               </>
-            ) : (
+            {/* ) : ( */}
               <Link
                 to="/login"
                 onClick={() => setIsOpen(false)}
@@ -224,9 +200,9 @@ const supabase = createClient(
               >
                 Login
               </Link>
-            )}
+            {/* )} */}
           </div>
-        )}
+        {/* )} */}
       </div>
     </nav>
   );
