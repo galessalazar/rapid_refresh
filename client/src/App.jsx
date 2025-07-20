@@ -14,18 +14,19 @@ import Register from "./components/Register";
 import ChangePassword from "./components/ChangePassword";
 import  SupabaseLogin  from "./components/SupabaseLogin";
 import "@fontsource/material-symbols-outlined";
+import ProtectedRoute from './components/ProtectedRoutes'
 
 
 // Protected Route component
-const ProtectedRoute = ({ children }) => {
-  const token = localStorage.getItem('token');
+// const ProtectedRoute = ({ children }) => {
+//   const token = localStorage.getItem('token');
   
-  if (!token) {
-    return <Navigate to="/login" replace />;
-  }
+//   if (!token) {
+//     return <Navigate to="/login" replace />;
+//   }
 
-  return children;
-};
+//   return children;
+// };
 
 function App() {
   // const [count, setCount] = useState(0);
