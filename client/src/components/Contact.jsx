@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "../axiosConfig";
+import { supabase } from "./CreateClient";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -13,19 +14,26 @@ const Contact = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Check if user is logged in
-    const token = localStorage.getItem('token');
-    if (!token) {
-      return; // Don't redirect, just show the form
-    }
+
+   
 
     // Verify owner status
     const checkOwnerStatus = async () => {
+
+       const { data } = await supabase.auth.getSession();
+    // Check if user is logged in
+    const token = data.session?.access_token;
+    if (!token) {
+      return; // Don't redirect, just show the form
+    }
       try {
+                    console.log('isOwner:', isOwner)
+
         const response = await axios.get('/api/verify-owner', {
           headers: { Authorization: `Bearer ${token}` }
         });
         setIsOwner(response.data.isOwner);
+
       } catch (err) {
         console.error('Error checking owner status:', err);
       }
@@ -46,7 +54,9 @@ const Contact = () => {
     setStatus({ type: "loading", message: "Sending message..." });
 
     try {
-      const token = localStorage.getItem('token');
+      const { data } = await supabase.auth.getSession();
+      const token = data.session?.access_token;
+      console.log('Token:', token)
       if (!token) {
         setStatus({ 
           type: "error", 

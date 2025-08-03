@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 
+
 // Middleware to verify JWT token
 const authenticateToken = async (req, res, next) => {
   try {
@@ -10,17 +11,18 @@ const authenticateToken = async (req, res, next) => {
       return res.status(401).json({ message: 'No token provided' });
     }
 
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    // const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const { createClient } = require('@supabase/supabase-js')
     
     // Import User model here to avoid circular dependency
     const { User } = require('../models');
-    const user = await User.findByPk(decoded.id);
+    // const user = await User.findByPk(decoded.id);
 
-    if (!user) {
-      return res.status(401).json({ message: 'User not found' });
-    }
+    // if (!user) {
+    //   return res.status(401).json({ message: 'User not found' });
+    // }
 
-    req.user = user;
+    // req.user = user;
     next();
   } catch (error) {
     console.error('Auth error:', error);

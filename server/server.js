@@ -1,7 +1,7 @@
 const express = require("express");
 require("dotenv").config();
 const path = require("path");
-const { authMiddleware } = require('./utils/auth');
+const { authMiddleware } = require('./middleware/authMiddleware');
 const authRoutes = require('./routes/authRoutes');
 const cors = require("cors");
 
@@ -48,6 +48,7 @@ app.use(express.static(path.join(__dirname, "../client/dist")));
 const sequelize = require("./controllers/connection");
 const serviceRoutes = require("./routes/serviceRoutes");
 const apiRoutes = require("./routes/api");
+const contactRoutes = require('./routes/contactRoutes');
 
 const PORT = process.env.PORT || 3001;
 
@@ -65,6 +66,7 @@ if (process.env.NODE_ENV === "production") {
 app.use('/api', authRoutes);
 app.use("/api/services", serviceRoutes);
 app.use("/api", apiRoutes);
+app.use("/api/contact", contactRoutes);
 
 // this needs to remain outside of the below if statement to always include a default route
 app.get("/", (req, res) => {
