@@ -1,5 +1,6 @@
 // https://www.geeksforgeeks.org/json-web-token-jwt/
 
+require('dotenv').config();
 const express = require("express");
 
 const router = express.Router();
