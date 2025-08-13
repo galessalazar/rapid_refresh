@@ -1,33 +1,36 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "../axiosConfig";
+import { supabase } from "./CreateClient";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    message: ""
+    message: "",
   });
   const [status, setStatus] = useState({ type: "", message: "" });
   const [isOwner, setIsOwner] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Check if user is logged in
-    const token = localStorage.getItem('token');
-    if (!token) {
-      return; // Don't redirect, just show the form
-    }
-
     // Verify owner status
     const checkOwnerStatus = async () => {
+      const { data } = await supabase.auth.getSession();
+      // Check if user is logged in
+      const token = data.session?.access_token;
+      if (!token) {
+        return; // Don't redirect, just show the form
+      }
       try {
-        const response = await axios.get('/api/verify-owner', {
-          headers: { Authorization: `Bearer ${token}` }
+        console.log("isOwner:", isOwner);
+
+        const response = await axios.get("/api/verify-owner", {
+          headers: { Authorization: `Bearer ${token}` },
         });
         setIsOwner(response.data.isOwner);
       } catch (err) {
-        console.error('Error checking owner status:', err);
+        console.error("Error checking owner status:", err);
       }
     };
 
@@ -37,7 +40,7 @@ const Contact = () => {
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -46,36 +49,39 @@ const Contact = () => {
     setStatus({ type: "loading", message: "Sending message..." });
 
     try {
-      const token = localStorage.getItem('token');
-      if (!token) {
-        setStatus({ 
-          type: "error", 
-          message: "Please log in to submit the contact form" 
-        });
-        return;
+      const { data: insertData, error } = await supabase
+        .from("contact_messages")
+        .insert([
+          {
+            name: formData.name,
+            email: formData.email,
+            message: formData.message,
+          },
+        ]);
+
+      if (error) {
+        console.error("Insert error:", error);
       }
 
-      await axios.post("/api/contact", formData, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
-      
       setStatus({ type: "success", message: "Message sent successfully!" });
       setFormData({ name: "", email: "", message: "" });
     } catch (error) {
       if (error.response?.status === 401) {
-        setStatus({ 
-          type: "error", 
-          message: "Please log in to submit the contact form" 
+        setStatus({
+          type: "error",
+          message: "Please log in to submit the contact form",
         });
       } else if (error.response?.status === 403) {
-        setStatus({ 
-          type: "error", 
-          message: "Only owners can submit contact forms" 
+        setStatus({
+          type: "error",
+          message: "Only owners can submit contact forms",
         });
       } else {
-        setStatus({ 
-          type: "error", 
-          message: error.response?.data?.message || "Failed to send message. Please try again." 
+        setStatus({
+          type: "error",
+          message:
+            error.response?.data?.message ||
+            "Failed to send message. Please try again.",
         });
       }
     }
@@ -83,15 +89,22 @@ const Contact = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-4">
-      <form onSubmit={handleSubmit} className="w-full max-w-md p-6 bg-white rounded-lg shadow-md">
+      <form
+        onSubmit={handleSubmit}
+        className="w-full max-w-md p-6 bg-white rounded-lg shadow-md"
+      >
         <h2 className="text-2xl font-bold mb-6 text-center">Contact Us</h2>
-        
+
         {status.message && (
-          <div className={`mb-4 p-3 rounded ${
-            status.type === "success" ? "bg-green-100 text-green-700" :
-            status.type === "error" ? "bg-red-100 text-red-700" :
-            "bg-blue-100 text-blue-700"
-          }`}>
+          <div
+            className={`mb-4 p-3 rounded ${
+              status.type === "success"
+                ? "bg-green-100 text-green-700"
+                : status.type === "error"
+                ? "bg-red-100 text-red-700"
+                : "bg-blue-100 text-blue-700"
+            }`}
+          >
             {status.message}
           </div>
         )}
