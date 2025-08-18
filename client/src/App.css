@@ -25,6 +25,16 @@ nav.bg-gray-800 {
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
 }
 
+/* SIDEBAR CSS */
+
+
+
+
+ 
+
+
+/* END OF SIDEBAR CSS */
+
 @media (max-width: 768px) {
   body {
     color: #213547;

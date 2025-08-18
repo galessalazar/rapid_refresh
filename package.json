@@ -15,10 +15,20 @@
     "sequelize-cli": "^6.6.2"
   },
   "dependencies": {
+    "@radix-ui/react-avatar": "^1.1.10",
+    "@radix-ui/react-collapsible": "^1.1.12",
+    "@radix-ui/react-dialog": "^1.1.15",
+    "@radix-ui/react-dropdown-menu": "^2.1.16",
+    "@radix-ui/react-separator": "^1.1.7",
+    "@radix-ui/react-slot": "^1.2.3",
+    "@radix-ui/react-tooltip": "^1.2.8",
     "@supabase/auth-ui-react": "^0.4.7",
     "@supabase/auth-ui-shared": "^0.1.8",
     "@supabase/supabase-js": "^2.50.3",
     "class-variance-authority": "^0.7.1",
-    "lucide-react": "^0.503.0"
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.503.0",
+    "tailwind-merge": "^3.3.1",
+    "tw-animate-css": "^1.3.7"
   }
 }

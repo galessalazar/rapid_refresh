@@ -16,6 +16,7 @@ import SupabaseLogin from "./components/SupabaseLogin";
 import "@fontsource/material-symbols-outlined";
 import ProtectedRoute from "./components/ProtectedRoutes";
 
+
 function App() {
   return (
     <BrowserRouter>
