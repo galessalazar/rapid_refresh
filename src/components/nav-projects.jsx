@@ -24,13 +24,7 @@ import {
 } from "@/components/ui/sidebar"
 
 export function NavProjects({
-  projects,
-}: {
-  projects: {
-    name: string
-    url: string
-    icon: LucideIcon
-  }[]
+  projects
 }) {
   const { isMobile } = useSidebar()
 

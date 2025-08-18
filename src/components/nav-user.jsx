@@ -31,13 +31,7 @@ import {
 } from "@/components/ui/sidebar"
 
 export function NavUser({
-  user,
-}: {
-  user: {
-    name: string
-    email: string
-    avatar: string
-  }
+  user
 }) {
   const { isMobile } = useSidebar()
 

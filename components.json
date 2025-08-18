@@ -2,13 +2,13 @@
   "$schema": "https://ui.shadcn.com/schema.json",
   "style": "new-york",
   "rsc": false,
-  "tsx": true,
+  "tsx": false,
   "tailwind": {
-    "config": "",
+    "config": "./client/tailwind.config.js",
     "css": "./client/src/App.css",
     "baseColor": "neutral",
     "cssVariables": true,
-    "prefix": ""
+    "prefix": "tw-"
   },
   "aliases": {
     "components": "@/components",
