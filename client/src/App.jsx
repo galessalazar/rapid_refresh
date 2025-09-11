@@ -15,11 +15,20 @@ import ChangePassword from "./components/ChangePassword";
 import SupabaseLogin from "./components/SupabaseLogin";
 import "@fontsource/material-symbols-outlined";
 import ProtectedRoute from "./components/ProtectedRoutes";
+// import { AppSidebar } from "../../src/components/app-sidebar";
+// import { SidebarProvider } from "../../src/components/ui/sidebar";
+// import {app-sidebar} from "@components/app-sidebar.jsx" 
+
 
 function App() {
   return (
+    
     <BrowserRouter>
+
+     {/* <SidebarProvider> */}
+              
       <Navbar />
+      {/* <AppSidebar /> */}
       {/* added padding div to impact all pages */}
       <div className="pt-20 px-4 w-full flex flex-col lg:flex-row lg:justify-center lg:items-center lg:min-h-screen">
         <Routes>
@@ -49,8 +58,17 @@ function App() {
             }
           />
         </Routes>
+        
       </div>
+       {/* </SidebarProvider> */}
     </BrowserRouter>
+   
+    
+
+     
+ 
+
+    
   );
 }
 
